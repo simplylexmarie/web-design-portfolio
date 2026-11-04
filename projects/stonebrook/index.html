@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stonebrook Carpentry · Interactive Case Study · Alexia Rucker</title>
+<meta name="description" content="An interactive case study of the Stonebrook Carpentry website: a tape-measure scroll indicator, an interactive what-we-build stack, stacking behind-the-walls remodel stages and a real project gallery. Play with the actual features.">
+<meta name="theme-color" content="#f6ece0">
+<link rel="canonical" href="https://simplylexmarie.github.io/web-design-portfolio/projects/stonebrook/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stonebrook Carpentry · Interactive Case Study">
+<meta property="og:description" content="A clean, architectural carpentry site built to book free estimates, with a tape-measure scroll indicator and stacking remodel stages. Play with the real features.">
+<meta property="og:url" content="https://simplylexmarie.github.io/web-design-portfolio/projects/stonebrook/">
+<meta property="og:image" content="https://simplylexmarie.github.io/web-design-portfolio/assets/img/stonebrook-desktop.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://simplylexmarie.github.io/web-design-portfolio/assets/img/stonebrook-desktop.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/portfolio.css">
+</head>
+<body class="sb">
+<a class="skip" href="#g-main">Skip to the features</a>
+
+<header class="g-top">
+  <a class="g-back" href="../../#work">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <div class="g-id">Stonebrook Carpentry · Case study</div>
+  <a class="g-visit" href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/" target="_blank" rel="noopener">Visit live site ↗</a>
+</header>
+
+<div class="g-hero">
+  <p class="eyebrow">Interactive case study · Carpentry &amp; remodeling</p>
+  <h1>Stonebrook Carpentry</h1>
+  <p class="lead">A clean, architectural site built to turn visitors into free-estimate bookings. Every feature below is the real thing, running live from the actual website. Pick one and play with it.</p>
+</div>
+
+<main id="g-main" class="gallery">
+
+  <div class="g-stage-wrap">
+    <div class="g-stage loading">
+      <span class="scrollhint" aria-hidden="true">Scroll inside to explore ↓</span>
+      <div class="g-loader" aria-hidden="true"><div class="spin"></div><span>Loading the real feature…</span></div>
+      <iframe id="g-frame" title="Live interactive feature" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="g-caption">
+      <button class="g-arrow" data-nav="prev" type="button" aria-label="Previous feature">‹</button>
+      <div class="g-cap-text" aria-live="polite">
+        <p class="k"></p>
+        <h2></h2>
+        <p></p>
+      </div>
+      <button class="g-arrow" data-nav="next" type="button" aria-label="Next feature">›</button>
+    </div>
+
+    <!-- no within-feature stepper needed for Stonebrook; kept hidden for parity -->
+    <div class="g-substep" aria-label="Sequence topics">
+      <button class="prev" type="button">‹ Prev</button>
+      <div class="dots" role="group" aria-label="Topics"></div>
+      <button class="next" type="button">Next ›</button>
+    </div>
+
+    <div class="g-mobnav">
+      <button data-nav="prev" type="button">‹ Previous</button>
+      <button data-nav="next" type="button">Next ›</button>
+    </div>
+  </div>
+
+  <div class="g-thumbs" role="group" aria-label="Choose a feature to preview">
+    <button class="g-thumb" type="button"
+      data-src="sb-hero.html" data-mode="fixed" data-h="540" data-hm="460" data-scroll="0"
+      data-kicker="Homepage design" data-title="A calm, confident first impression."
+      data-desc="The real hero: a settled headline, a hand-drawn underline, and a photograph that does the talking.">
+      <span class="tn">01</span><span class="tt">Homepage design</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sb-tape.html" data-mode="scroll" data-h="560" data-hm="480" data-scroll="1"
+      data-kicker="Tape-measure scroll progress" data-title="A tape measure that tracks your scroll."
+      data-desc="Scroll the panel and the measuring-tape blade pulls out across the top, the way a build progresses.">
+      <span class="tn">02</span><span class="tt">Tape-measure scroll</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sb-services.html" data-mode="auto" data-h="560" data-hm="560" data-scroll="0"
+      data-kicker="What we build" data-title="Pick a trade, see the proof."
+      data-desc="Hover or tap any service and its real photo slides onto the stack.">
+      <span class="tn">03</span><span class="tt">What we build</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sb-behind.html" data-mode="scroll" data-h="600" data-hm="520" data-scroll="1"
+      data-kicker="A peek behind the walls" data-title="Three stages that stack as you go."
+      data-desc="Scroll through a real bathroom remodel. Each stage slides up over the last, from studs to finished stone.">
+      <span class="tn">04</span><span class="tt">Behind the walls</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sb-work.html" data-mode="auto" data-h="520" data-hm="520" data-scroll="0"
+      data-kicker="See our latest work" data-title="Real projects, by category."
+      data-desc="Pick a project type to open the full set of real photos from homes around western Wisconsin.">
+      <span class="tn">05</span><span class="tt">Latest work</span>
+    </button>
+  </div>
+
+</main>
+
+<footer class="g-foot">
+  <p class="fh">Want one like this?</p>
+  <h2>Let's build yours.</h2>
+  <div class="row">
+    <a class="btn btn--solid" href="../../#offer">Get a free rough draft</a>
+    <a class="btn btn--ghost" href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/" target="_blank" rel="noopener">Visit the live site ↗</a>
+    <a class="btn btn--ghost" href="../../">← Back to portfolio</a>
+  </div>
+</footer>
+
+<script src="../../assets/js/gallery.js" defer></script>
+</body>
+</html>

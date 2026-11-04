@@ -1,0 +1,237 @@
+<!doctype html><html lang="en" class="js"><head><meta charset="utf-8">
+<base href="https://brilliantimpact-media.github.io/smokehouse-website/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smoke hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&family=Caveat:wght@600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=20261008a">
+<style>
+  html,body{margin:0;padding:0;background:transparent}
+  :root{--header-h:0px}
+  ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(120,90,80,.35);border-radius:8px}
+  /* ==========================================================================
+   HOMEPAGE, scoped to this page.
+   Cinematic steak+smoke hero (unchanged) handing off into the scroll flow.
+   ========================================================================== */
+
+/* --- hero tagline: was too small and too low-contrast over the steak ----- */
+.cinema .eyebrow--plain {
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--paper);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 6px rgba(20,16,13,.9), 0 0 26px rgba(20,16,13,.75);
+}
+
+/* --- statement: quiet connectives, loud claims ---------------------------- */
+.statement { padding-block: clamp(5rem, 12vh, 9rem) !important; }
+.statement__grid { display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (min-width: 900px) { .statement__grid { grid-template-columns: 1.35fr .65fr; } }
+
+.q1 { margin: 0; max-width: none; text-transform: none; letter-spacing: 0; }
+.q1 .lo {
+  display: block;
+  font-family: var(--font-body); font-weight: 400; text-transform: none;
+  font-size: clamp(.98rem, 1.25vw, 1.18rem); line-height: 1.4;
+  color: var(--ink-3); letter-spacing: 0; margin-bottom: .25em;
+}
+.q1 .hi {
+  display: block;
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.75rem, 3.5vw, 3.05rem); line-height: .98;
+  color: var(--ink); letter-spacing: 0;
+}
+.q1 .hi + .lo { margin-top: .5em; }
+.q1 .red { color: var(--oxblood); }
+
+.statement__aside {
+  border-left: 2px solid var(--oxblood);
+  padding-left: clamp(1rem, 1.6vw, 1.4rem);
+  font-size: .95rem; line-height: 1.6; color: var(--ink-3);
+}
+.statement__aside p { margin: 0; }
+.statement__aside .annot { margin-top: 1.1rem; }
+.statement__aside .stamp { --stamp-size: clamp(112px, 12vw, 150px); margin-top: 1.6rem; }
+
+/* --- pinned differentiator sequence -------------------------------------- */
+.seq { height: 420vh; position: relative; background: var(--char); color: var(--paper); border: 0 !important; padding: 0 !important; }
+.seq__sticky {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: grid; align-content: center; gap: clamp(1.5rem, 4vh, 3rem);
+  padding-inline: var(--gutter);
+  padding-bottom: 20vh;                 /* keeps the copy clear of the grass line */
+}
+.seq__main {
+  display: grid; grid-template-columns: minmax(0,1fr) auto;
+  align-items: start; gap: clamp(1.5rem, 4vw, 4rem);
+}
+.seq__count {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(3.5rem, 11vw, 9rem); line-height: .82; letter-spacing: -.05em;
+  color: color-mix(in srgb, var(--paper) 10%, transparent);
+  font-variant-numeric: tabular-nums;
+  justify-self: end; align-self: start;
+}
+@media (max-width: 760px) { .seq__count { display: none; } }
+.seq__panels { position: relative; max-width: 900px; }
+.seq__panel {
+  position: absolute; inset: 0;
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .45s ease, transform .45s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.seq__panel.active { position: relative; opacity: 1; transform: none; pointer-events: auto; }
+.seq__panel h3 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2.6rem, 8vw, 6.5rem); line-height: .95;
+  letter-spacing: -.035em; text-transform: uppercase;
+  color: var(--paper); margin: 0 0 1.4rem;
+}
+.seq__panel p {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  color: color-mix(in srgb, var(--paper) 76%, var(--char));
+  max-width: 52ch;
+}
+.seq__bar {
+  position: absolute; bottom: 9vh; left: var(--gutter); right: var(--gutter);
+  height: 4px; background: color-mix(in srgb, var(--paper) 15%, transparent);
+}
+.seq__bar i { position: absolute; inset-block: 0; left: 0; width: 0; background: var(--paper); }
+
+/* stylisation pass: the panel was flat charcoal, so it now carries the same
+   smoke, oxblood and letterpress the hero does. Structure and copy unchanged. */
+.seq__sticky::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+}
+.seq__sticky::after {
+  opacity: .26; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+/* z-index only: the blanket position:relative here was overriding the
+   absolute placement on the counter, the label and the progress bar. */
+.seq__sticky > * { z-index: 1; }
+.seq__count {
+  color: color-mix(in srgb, var(--oxblood) 55%, transparent);
+  text-shadow: 0 2px 0 rgba(0,0,0,.35);
+}
+.seq__panel h3 {
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 0 rgba(255,255,255,.09), 0 -1px 0 rgba(0,0,0,.55);
+}
+.seq__panel h3::after {
+  content: ""; display: block; width: 92px; height: 5px;
+  background: var(--oxblood); margin-top: 1.2rem;
+}
+.seq__label { color: color-mix(in srgb, var(--paper) 66%, transparent); }
+
+/* Phones: the panel is short and the counter is hidden, so 100vh left a large
+   dead field under the copy. Tighter padding and a shorter scroll track. */
+@media (max-width: 760px) {
+  .seq { height: 320vh; }
+  /* anchor the copy just above the grass so the slack collects at the top,
+     under the header, instead of opening a gap in the middle of the panel */
+  .seq__sticky { align-content: end; padding-bottom: calc(22vh + 46px); gap: 1rem; }
+  .seq__panel h3 { font-size: clamp(2.3rem, 12.5vw, 3.4rem); margin-bottom: .8rem; }
+  .seq__panel h3::after { margin-top: .9rem; width: 72px; height: 4px; }
+  .seq__panel p { font-size: 1.02rem; }
+  .seq__label { bottom: calc(9vh + 60px); font-size: .64rem; }
+}
+.seq__bar { height: 3px; background: color-mix(in srgb, var(--paper) 13%, transparent); }
+.seq__bar i {
+  background: var(--oxblood);
+  box-shadow: 0 0 16px rgba(122,31,38,.85);
+}
+.seq__grass {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+  background-color: #5c6b3c;
+  -webkit-mask: url("assets/img/grass.svg") repeat-x bottom left / 72px 22px;
+          mask: url("assets/img/grass.svg") repeat-x bottom left / 72px 22px;
+  opacity: .9; pointer-events: none;
+  /* everything the cow has walked past has been eaten */
+  clip-path: inset(0 0 0 var(--q, 0%));
+  transition: clip-path .18s linear;
+}
+.seq__cow {
+  position: absolute; left: var(--q, 0%); bottom: 2px;
+  width: clamp(62px, 6.5vw, 96px); aspect-ratio: 420 / 262;
+  transform: translateX(-88%);              /* muzzle lands on the grass edge */
+  background-color: var(--paper);
+  -webkit-mask: url("assets/img/cow.png") no-repeat center bottom / contain;
+          mask: url("assets/img/cow.png") no-repeat center bottom / contain;
+  transition: left .18s linear; pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .seq__cow, .seq__grass { transition: none; }
+}
+.seq__label {
+  position: absolute; bottom: calc(9vh + 78px); left: var(--gutter);
+  font-family: var(--font-ui); font-size: .72rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+/* --- comparison ----------------------------------------------------------- */
+.compare { padding-block: clamp(5rem, 12vh, 9rem) !important; }
+.compare table { min-width: 0; }
+.compare th:not(:first-child), .compare td:not(:first-child) { text-align: center; width: 9rem; }
+.compare td b { font-family: var(--font-ui); font-size: 1.15rem; }
+.compare .no { color: var(--ink-3); opacity: .55; }
+
+
+/* --- closing -------------------------------------------------------------- */
+.closing {
+  min-height: 0; display: grid; place-content: center; text-align: center;
+  background: var(--char); color: var(--paper);
+  gap: .7rem; padding: clamp(2.4rem, 5vh, 3.6rem) var(--gutter) !important;
+  border: 0 !important;
+}
+.closing h2 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2rem, 5.2vw, 4rem); line-height: .96;
+  letter-spacing: -.035em; text-transform: uppercase;
+  color: var(--paper); max-width: 18ch; margin-inline: auto;
+}
+.closing p { color: color-mix(in srgb, var(--paper) 75%, var(--char)); margin-inline: auto; }
+.closing .btn-row { margin-top: .9rem; }
+.closing .btn { padding: .7rem 1.5rem; font-size: .72rem; letter-spacing: .14em; }
+
+/* --- big footer wordmark -------------------------------------------------- */
+.footer-mega {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(1.4rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -.02em;
+  text-transform: uppercase; color: color-mix(in srgb, var(--paper) 20%, var(--ink));
+  margin: 2.5rem 0 0; user-select: none;
+}
+body{overflow:hidden}.cinema{min-height:100svh}
+</style>
+</head>
+<body class="">
+<main>  <section class="cinema">
+    <div class="cinema__media" data-parallax="0.08">
+      <img src="assets/img/hero-steak-WEB-PULLED.jpg"
+           alt="Sliced dry-aged steak and a carving fork on a slate board over dark walnut wood"
+           fetchpriority="high">
+    </div>
+    <div class="cinema__scrim" aria-hidden="true"></div>
+    <video class="cinema__smoke-video" src="assets/video/smoke-loop.mp4"
+           autoplay muted loop playsinline aria-hidden="true"></video>
+    <canvas class="cinema__smoke-canvas" aria-hidden="true"></canvas>
+    <div class="cinema__grain" aria-hidden="true"></div>
+
+    <div class="shell cinema__content">
+      <p class="eyebrow eyebrow--plain" data-reveal="fade">Crafted Meat, Trusted Processing</p>
+      <h1>Full-service butchering, cut to your order.</h1>
+      <p class="lede" data-reveal style="--reveal-delay:.12s">Meat processing that’s crafted locally, because your family deserves the real thing.</p>
+      <div class="btn-row" data-reveal style="--reveal-delay:.24s">
+        <a class="btn btn--on-dark" href="custom-processing.html">Schedule Your Slaughter</a>
+      </div>
+      <p class="hero__proof" data-reveal="fade" style="--reveal-delay:.4s">
+        <span>Family-owned</span>
+        <span>Dry-aged, never rushed</span>
+        <span>Split orders handled right</span>
+        <span>Durand &amp; Woodville, WI</span>
+      </p>
+    </div>
+  </section></main>
+<script src="assets/js/site.js?v=20261006u"></script>
+</body></html>

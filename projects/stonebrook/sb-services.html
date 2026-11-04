@@ -1,0 +1,77 @@
+<!doctype html><html lang="en" class="js"><head><meta charset="utf-8">
+<base href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What we build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css?v=202611031649">
+<style>
+  html,body{margin:0;padding:0;background:transparent}
+  :root{--header-h:0px}
+  ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(120,90,80,.35);border-radius:8px}
+  main,section{max-width:100%}body{overflow-x:hidden}
+</style>
+</head>
+<body class="">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="p-circle" viewBox="0 0 200 80" preserveAspectRatio="none">
+      <path pathLength="1" d="M34 13 C 88 -1, 176 5, 193 32 C 207 59, 141 77, 88 74 C 31 71, 2 57, 8 36 C 13 20, 48 8, 118 9"/>
+    </symbol>
+    <symbol id="p-underline" viewBox="0 0 200 20" preserveAspectRatio="none">
+      <path pathLength="1" d="M3 13 C 52 5, 128 3, 197 9 M22 18 C 74 11, 140 10, 184 14"/>
+    </symbol>
+    <symbol id="p-one" viewBox="0 0 70 120"><path pathLength="1" d="M18 26 C 30 18, 38 10, 44 4 C 42 40, 40 80, 38 114"/></symbol>
+    <symbol id="p-two" viewBox="0 0 90 120"><path pathLength="1" d="M10 34 C 12 8, 70 0, 72 32 C 74 58, 30 82, 8 112 C 34 108, 60 108, 86 110"/></symbol>
+    <symbol id="p-three" viewBox="0 0 90 120"><path pathLength="1" d="M12 16 C 44 -2, 84 12, 58 46 C 50 54, 38 56, 32 56 C 92 54, 86 120, 10 104"/></symbol>
+  </defs>
+</svg>
+<main><section class="services" id="services">
+  <div class="wrap services-grid">
+    <div class="svc-list" data-reveal>
+      <h2>What we <span class="pmark">build.<svg class="pencil p-circle"><use href="#p-circle"/></svg></span></h2>
+      <span class="arrow arrow-curve arrow-svc" data-reveal aria-hidden="true"></span>
+      <ul>
+        <li><button class="svc active" data-img="assets/img/porch-stairs-side.jpg" data-alt="Cedar porch stairs and railings"><strong>Decks &amp; Porches</strong><span>Railings, stairs and covered porches framed for Wisconsin winters.</span></button></li>
+        <li><button class="svc" data-img="assets/img/shower-blue-tile.jpg" data-alt="Custom tiled walk-in shower"><strong>Custom Tile</strong><span>Showers, floors and backsplashes, waterproofed before a single tile goes up.</span></button></li>
+        <li><button class="svc" data-img="assets/img/vanity-wide.jpg" data-alt="Double vanity bathroom remodel"><strong>Kitchens &amp; Baths</strong><span>Vanities, cabinets, flooring and full remodels, finished cleanly.</span></button></li>
+        <li><button class="svc" data-img="assets/img/basement.jpg" data-alt="Finished basement room"><strong>Basement Finishing</strong><span>Unused square footage turned into rooms your family actually uses.</span></button></li>
+        <li><button class="svc" data-img="assets/img/patio-exterior.jpg" data-alt="Finished home exterior with balcony railing and stone patio"><strong>Additions &amp; Exteriors</strong><span>Additions, siding, trim and roofing tied in seamlessly with the house.</span></button></li>
+        <li><button class="svc" data-img="assets/img/deck-structure.jpg" data-alt="Heavy timber deck framing"><strong>Repairs Done Right</strong><span>Rotted framing, sagging floors and failing decks fixed properly, not covered up.</span></button></li>
+      </ul>
+    </div>
+    <figure class="svc-media" data-reveal>
+      <img class="svc-img" src="assets/img/porch-stairs-side.jpg" alt="Cedar porch stairs and railings">
+    </figure>
+  </div>
+</section></main>
+<script>
+(function(){var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var svcMedia=document.querySelector('.svc-media'),svcs=Array.prototype.slice.call(document.querySelectorAll('.svc'));
+if(!svcMedia||!svcs.length)return;var tilts=[-2.5,2,-1.2,2.6,-2,1.4];svcMedia.innerHTML='';
+var photos=svcs.map(function(b,i){var img=document.createElement('img');img.className='stack-photo'+(i===0?' in':'');img.src=b.dataset.img;img.alt=b.dataset.alt||'';img.style.setProperty('--tilt',tilts[i%tilts.length]+'deg');img.style.zIndex=i+1;svcMedia.appendChild(img);return img;});
+var active=0;function activate(btn){var n=svcs.indexOf(btn);if(n===active)return;svcs.forEach(function(b){b.classList.toggle('active',b===btn);});var up=n>active;
+photos.forEach(function(ph,i){var on=i<=n;if(on===ph.classList.contains('in'))return;var delay=up?(i-active-1)*90:(active-i)*90;ph.style.transitionDelay=Math.max(0,delay)+'ms';ph.classList.toggle('in',on);});active=n;}
+svcs.forEach(function(btn){btn.addEventListener('mouseenter',function(){activate(btn);});btn.addEventListener('focus',function(){activate(btn);});btn.addEventListener('click',function(){activate(btn);});});})();
+</script><script>
+document.documentElement.classList.add('js');
+(function(){
+  try{document.querySelectorAll('svg.pencil').forEach(function(svg){Array.prototype.slice.call(svg.children).forEach(function(m){var g=m.cloneNode(true);g.classList.add('ghost');svg.appendChild(g);});});}catch(e){}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t=new Set();
+  document.querySelectorAll('[data-reveal]').forEach(function(e){t.add(e);});
+  document.querySelectorAll('svg.pencil').forEach(function(s){if(s.parentElement)t.add(s.parentElement);});
+  document.querySelectorAll('.wipe').forEach(function(w){t.delete(w);if(w.parentElement)t.add(w.parentElement);});
+  function reveal(el){el.classList.add('in','drawn','m-in');el.querySelectorAll(':scope > .wipe').forEach(function(w){w.classList.add('in');});el.querySelectorAll('[data-count]').forEach(function(c){c.textContent=c.dataset.count;});}
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    t.forEach(function(el){io.observe(el);});
+  } else { t.forEach(reveal); }
+})();
+</script><script>
+(function(){var last=0;function post(){var h=Math.ceil(document.documentElement.scrollHeight);if(Math.abs(h-last)<2)return;last=h;try{parent.postMessage({shFrame:(location.pathname.split('/').pop()||''),shHeight:h},'*');}catch(e){}}
+addEventListener('load',post);addEventListener('resize',post);
+if(window.ResizeObserver){new ResizeObserver(post).observe(document.body);}
+setTimeout(post,200);setTimeout(post,800);setTimeout(post,1800);
+document.addEventListener('click',function(){setTimeout(post,60);setTimeout(post,500);});})();
+</script>
+</body></html>

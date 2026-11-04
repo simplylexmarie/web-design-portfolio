@@ -1,0 +1,81 @@
+<!doctype html><html lang="en" class="js"><head><meta charset="utf-8">
+<base href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Latest work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css?v=202611031649">
+<style>
+  html,body{margin:0;padding:0;background:transparent}
+  :root{--header-h:0px}
+  ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(120,90,80,.35);border-radius:8px}
+  main,section{max-width:100%}body{overflow-x:hidden}
+</style>
+</head>
+<body class="">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="p-circle" viewBox="0 0 200 80" preserveAspectRatio="none">
+      <path pathLength="1" d="M34 13 C 88 -1, 176 5, 193 32 C 207 59, 141 77, 88 74 C 31 71, 2 57, 8 36 C 13 20, 48 8, 118 9"/>
+    </symbol>
+    <symbol id="p-underline" viewBox="0 0 200 20" preserveAspectRatio="none">
+      <path pathLength="1" d="M3 13 C 52 5, 128 3, 197 9 M22 18 C 74 11, 140 10, 184 14"/>
+    </symbol>
+    <symbol id="p-one" viewBox="0 0 70 120"><path pathLength="1" d="M18 26 C 30 18, 38 10, 44 4 C 42 40, 40 80, 38 114"/></symbol>
+    <symbol id="p-two" viewBox="0 0 90 120"><path pathLength="1" d="M10 34 C 12 8, 70 0, 72 32 C 74 58, 30 82, 8 112 C 34 108, 60 108, 86 110"/></symbol>
+    <symbol id="p-three" viewBox="0 0 90 120"><path pathLength="1" d="M12 16 C 44 -2, 84 12, 58 46 C 50 54, 38 56, 32 56 C 92 54, 86 120, 10 104"/></symbol>
+  </defs>
+</svg>
+<main><section class="work-sec" id="work">
+  <div class="wrap">
+    <header class="center-head" data-reveal>
+      <h2>See our latest <span class="pmark">work.<svg class="pencil p-circle"><use href="#p-circle"/></svg></span></h2>
+      <p>Real projects from homes around western Wisconsin.<br>Pick a project type to see the full set.</p>
+    </header>
+    <div class="mosaic" data-reveal>
+      <a target="_blank" rel="noopener" class="mtile m-l1" href="projects/baths-tile/">
+        <img src="assets/img/shower-glass.jpg" alt="River stone tile shower with black grid glass door" loading="lazy">
+        <span class="m-text"><span class="m-eyebrow">Custom</span><strong>Baths &amp; Tile</strong><span class="m-link">View projects</span></span>
+      </a>
+      <a target="_blank" rel="noopener" class="mtile m-l2" href="projects/basements/">
+        <img src="assets/img/basement.jpg" alt="Finished basement room" loading="lazy">
+        <span class="m-text"><span class="m-eyebrow">Finished</span><strong>Basements</strong><span class="m-link">View projects</span></span>
+      </a>
+      <a target="_blank" rel="noopener" class="mtile m-center" href="projects/decks-porches/">
+        <img src="assets/img/porch-front.jpg" alt="Covered front porch with wide cedar stairs" loading="lazy">
+        <span class="m-text"><span class="m-eyebrow">Outdoor Living</span><strong>Decks &amp; Porches</strong><span class="m-link">View projects</span></span>
+      </a>
+      <a target="_blank" rel="noopener" class="mtile m-r1" href="projects/additions-exteriors/">
+        <img src="assets/img/patio-dusk.jpg" alt="Backyard patio and home exterior at dusk" loading="lazy">
+        <span class="m-text"><span class="m-eyebrow">Seamless</span><strong>Additions &amp; Exteriors</strong><span class="m-link">View projects</span></span>
+      </a>
+      <a target="_blank" rel="noopener" class="mtile m-r2" href="projects/garages-outbuildings/">
+        <img src="assets/img/garage-white.jpg" alt="New two-stall garage" loading="lazy">
+        <span class="m-text"><span class="m-eyebrow">Built Strong</span><strong>Garages &amp; Outbuildings</strong><span class="m-link">View projects</span></span>
+      </a>
+    </div>
+    <p class="work-ctas" data-reveal><a class="btn btn-slate" href="projects/">View All Projects</a><a class="btn btn-tan" href="#estimate">Get Your Free Estimate</a></p>
+  </div>
+</section></main>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  try{document.querySelectorAll('svg.pencil').forEach(function(svg){Array.prototype.slice.call(svg.children).forEach(function(m){var g=m.cloneNode(true);g.classList.add('ghost');svg.appendChild(g);});});}catch(e){}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t=new Set();
+  document.querySelectorAll('[data-reveal]').forEach(function(e){t.add(e);});
+  document.querySelectorAll('svg.pencil').forEach(function(s){if(s.parentElement)t.add(s.parentElement);});
+  document.querySelectorAll('.wipe').forEach(function(w){t.delete(w);if(w.parentElement)t.add(w.parentElement);});
+  function reveal(el){el.classList.add('in','drawn','m-in');el.querySelectorAll(':scope > .wipe').forEach(function(w){w.classList.add('in');});el.querySelectorAll('[data-count]').forEach(function(c){c.textContent=c.dataset.count;});}
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    t.forEach(function(el){io.observe(el);});
+  } else { t.forEach(reveal); }
+})();
+</script><script>
+(function(){var last=0;function post(){var h=Math.ceil(document.documentElement.scrollHeight);if(Math.abs(h-last)<2)return;last=h;try{parent.postMessage({shFrame:(location.pathname.split('/').pop()||''),shHeight:h},'*');}catch(e){}}
+addEventListener('load',post);addEventListener('resize',post);
+if(window.ResizeObserver){new ResizeObserver(post).observe(document.body);}
+setTimeout(post,200);setTimeout(post,800);setTimeout(post,1800);
+document.addEventListener('click',function(){setTimeout(post,60);setTimeout(post,500);});})();
+</script>
+</body></html>

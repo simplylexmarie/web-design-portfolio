@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Smokehouse · Interactive Case Study · Alexia Rucker</title>
+<meta name="description" content="An interactive case study of The Smokehouse website: a real-time animated smoke hero, interactive product catalog, comparison slider, grazing-cow sequence and clickable cut-sheet diagrams. Play with the actual features.">
+<meta name="theme-color" content="#f6ece0">
+<link rel="canonical" href="https://simplylexmarie.github.io/web-design-portfolio/projects/smokehouse/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Smokehouse · Interactive Case Study">
+<meta property="og:description" content="A moody, modern butcher site, with living smoke, an interactive catalog, and a cow that grazes as you read. Play with the real features.">
+<meta property="og:url" content="https://simplylexmarie.github.io/web-design-portfolio/projects/smokehouse/">
+<meta property="og:image" content="https://simplylexmarie.github.io/web-design-portfolio/assets/img/smokehouse-desktop.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://simplylexmarie.github.io/web-design-portfolio/assets/img/smokehouse-desktop.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/portfolio.css">
+</head>
+<body class="sh">
+<a class="skip" href="#g-main">Skip to the features</a>
+
+<header class="g-top">
+  <a class="g-back" href="../../#work">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+  <div class="g-id">The Smokehouse · Case study</div>
+  <a class="g-visit" href="https://brilliantimpact-media.github.io/smokehouse-website/" target="_blank" rel="noopener">Visit live site ↗</a>
+</header>
+
+<div class="g-hero">
+  <p class="eyebrow">Interactive case study · Butcher &amp; meat processing</p>
+  <h1>The Smokehouse</h1>
+  <p class="lead">A bold, cinematic butcher &amp; meat-processing site. Every feature below is the real thing, running live from the actual website. Pick one and play with it.</p>
+</div>
+
+<main id="g-main" class="gallery">
+
+  <div class="g-stage-wrap">
+    <div class="g-stage loading">
+      <span class="scrollhint" aria-hidden="true">Scroll inside to explore ↓</span>
+      <div class="g-loader" aria-hidden="true"><div class="spin"></div><span>Loading the real feature…</span></div>
+      <iframe id="g-frame" title="Live interactive feature" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- caption + prev/next -->
+    <div class="g-caption">
+      <button class="g-arrow" data-nav="prev" type="button" aria-label="Previous feature">‹</button>
+      <div class="g-cap-text" aria-live="polite">
+        <p class="k"></p>
+        <h2></h2>
+        <p></p>
+      </div>
+      <button class="g-arrow" data-nav="next" type="button" aria-label="Next feature">›</button>
+    </div>
+
+    <!-- within-feature stepper (grazing cow) -->
+    <div class="g-substep" aria-label="Sequence topics">
+      <button class="prev" type="button">‹ Prev</button>
+      <div class="dots" role="group" aria-label="Topics">
+        <button class="dot" data-i="0" aria-label="Topic 1" aria-current="true"></button>
+        <button class="dot" data-i="1" aria-label="Topic 2"></button>
+        <button class="dot" data-i="2" aria-label="Topic 3"></button>
+        <button class="dot" data-i="3" aria-label="Topic 4"></button>
+      </div>
+      <button class="next" type="button">Next ›</button>
+    </div>
+
+    <!-- mobile prev/next -->
+    <div class="g-mobnav">
+      <button data-nav="prev" type="button">‹ Previous</button>
+      <button data-nav="next" type="button">Next ›</button>
+    </div>
+  </div>
+
+  <!-- feature selector -->
+  <div class="g-thumbs" role="group" aria-label="Choose a feature to preview">
+    <button class="g-thumb" type="button"
+      data-src="sh-hero.html" data-mode="fixed" data-h="600" data-hm="460" data-scroll="0"
+      data-kicker="Animated smoke hero" data-title="The atmosphere does the selling."
+      data-desc="Living smoke is drawn in real time right in the browser, drifting over the hero. No looping video faking it.">
+      <span class="tn">01</span><span class="tt">Animated hero</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sh-catalog.html" data-mode="auto" data-h="520" data-hm="520" data-scroll="0"
+      data-kicker="Interactive product catalog" data-title="Everything they make, one tap in."
+      data-desc="Tap a category to open its full case of products, exactly like the live site.">
+      <span class="tn">02</span><span class="tt">Product catalog</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sh-compare.html" data-mode="auto" data-h="560" data-hm="560" data-scroll="0"
+      data-kicker="Smokehouse vs. the meat aisle" data-title="Drag the line and feel the difference."
+      data-desc="Drag the slider, or hover the ledger rows, to wipe between the two. Works with touch and arrow keys.">
+      <span class="tn">03</span><span class="tt">Comparison slider</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sh-seq.html" data-mode="scroll" data-h="620" data-hm="520" data-scroll="1" data-seqnav="1"
+      data-kicker="The details make the difference" data-title="A cow that grazes as you read."
+      data-desc="Move through four things you won't get anywhere else, with the arrows or by scrolling. The cow walks the fence as you go.">
+      <span class="tn">04</span><span class="tt">Grazing cow</span>
+    </button>
+    <button class="g-thumb" type="button"
+      data-src="sh-cuts.html" data-mode="auto" data-h="640" data-hm="640" data-scroll="0"
+      data-kicker="Interactive cut sheets" data-title="Know your animal, cut by cut."
+      data-desc="Tap any primal on the beef or hog chart to light it up and see what it becomes on your order.">
+      <span class="tn">05</span><span class="tt">Cut sheets</span>
+    </button>
+  </div>
+
+</main>
+
+<footer class="g-foot">
+  <p class="fh">Want one like this?</p>
+  <h2>Let's build yours.</h2>
+  <div class="row">
+    <a class="btn btn--solid" href="../../#offer">Get a free rough draft</a>
+    <a class="btn btn--ghost" href="https://brilliantimpact-media.github.io/smokehouse-website/" target="_blank" rel="noopener">Visit the live site ↗</a>
+    <a class="btn btn--ghost" href="../../">← Back to portfolio</a>
+  </div>
+</footer>
+
+<script src="../../assets/js/gallery.js" defer></script>
+</body>
+</html>

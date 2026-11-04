@@ -1,0 +1,83 @@
+<!doctype html><html lang="en" class="js"><head><meta charset="utf-8">
+<base href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Peek behind the walls</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css?v=202611031649">
+<style>
+  html,body{margin:0;padding:0;background:transparent}
+  :root{--header-h:0px}
+  ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(120,90,80,.35);border-radius:8px}
+  body{overflow-y:auto}
+</style>
+</head>
+<body class="">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="p-circle" viewBox="0 0 200 80" preserveAspectRatio="none">
+      <path pathLength="1" d="M34 13 C 88 -1, 176 5, 193 32 C 207 59, 141 77, 88 74 C 31 71, 2 57, 8 36 C 13 20, 48 8, 118 9"/>
+    </symbol>
+    <symbol id="p-underline" viewBox="0 0 200 20" preserveAspectRatio="none">
+      <path pathLength="1" d="M3 13 C 52 5, 128 3, 197 9 M22 18 C 74 11, 140 10, 184 14"/>
+    </symbol>
+    <symbol id="p-one" viewBox="0 0 70 120"><path pathLength="1" d="M18 26 C 30 18, 38 10, 44 4 C 42 40, 40 80, 38 114"/></symbol>
+    <symbol id="p-two" viewBox="0 0 90 120"><path pathLength="1" d="M10 34 C 12 8, 70 0, 72 32 C 74 58, 30 82, 8 112 C 34 108, 60 108, 86 110"/></symbol>
+    <symbol id="p-three" viewBox="0 0 90 120"><path pathLength="1" d="M12 16 C 44 -2, 84 12, 58 46 C 50 54, 38 56, 32 56 C 92 54, 86 120, 10 104"/></symbol>
+  </defs>
+</svg>
+<main><section class="band-tan behind">
+  <div class="wrap">
+    <header class="center-head" data-reveal>
+      <span class="arrow arrow-loop arrow-behind" data-reveal aria-hidden="true"></span>
+      <h2>A peek <span class="pmark">behind<svg class="pencil p-under"><use href="#p-underline"/></svg></span> the walls.</h2>
+      <p>Quality means doing it right where no one can see. Here's what that looks like on a real bathroom remodel.</p>
+    </header>
+
+    <ol class="stack">
+      <li class="stack-card">
+        <figure><img src="assets/img/bath-gutted.jpg" alt="Bathroom taken down to the studs before the remodel" loading="lazy"></figure>
+        <div class="stack-text">
+          <svg class="pencil numeral"><use href="#p-one"/></svg>
+          <p class="stack-step">Step 1 of 3</p>
+          <h3>We open it up and show you.</h3>
+          <p>On this bathroom, we took the room down to the studs. Before anything new went in, we walked the homeowners through what we found and put the fix in writing.</p>
+        </div>
+      </li>
+      <li class="stack-card">
+        <figure><img src="assets/img/behind-waterproofing.jpg" alt="Shower walls covered in waterproofing membrane before tile" loading="lazy"></figure>
+        <div class="stack-text">
+          <svg class="pencil numeral"><use href="#p-two"/></svg>
+          <p class="stack-step">Step 2 of 3</p>
+          <h3>We do the part you'll never see.</h3>
+          <p>Every seam and corner of this shower was sealed with a waterproof membrane before a single stone went up. It's the step that keeps a shower lasting decades.</p>
+        </div>
+      </li>
+      <li class="stack-card">
+        <figure><img src="assets/img/shower-river-stone.jpg" alt="Finished river stone tile shower with niche and corner seat" loading="lazy"></figure>
+        <div class="stack-text">
+          <svg class="pencil numeral"><use href="#p-three"/></svg>
+          <p class="stack-step">Step 3 of 3</p>
+          <h3>Then we finish it beautifully.</h3>
+          <p>The result: a river stone shower with a corner seat, done right underneath and on the surface.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section></main>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  try{document.querySelectorAll('svg.pencil').forEach(function(svg){Array.prototype.slice.call(svg.children).forEach(function(m){var g=m.cloneNode(true);g.classList.add('ghost');svg.appendChild(g);});});}catch(e){}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t=new Set();
+  document.querySelectorAll('[data-reveal]').forEach(function(e){t.add(e);});
+  document.querySelectorAll('svg.pencil').forEach(function(s){if(s.parentElement)t.add(s.parentElement);});
+  document.querySelectorAll('.wipe').forEach(function(w){t.delete(w);if(w.parentElement)t.add(w.parentElement);});
+  function reveal(el){el.classList.add('in','drawn','m-in');el.querySelectorAll(':scope > .wipe').forEach(function(w){w.classList.add('in');});el.querySelectorAll('[data-count]').forEach(function(c){c.textContent=c.dataset.count;});}
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    t.forEach(function(el){io.observe(el);});
+  } else { t.forEach(reveal); }
+})();
+</script>
+</body></html>
