@@ -511,17 +511,15 @@ body.sb .g-thumb[aria-current="true"]::after{background:#3d5a4a}
 .lhero-tag{display:none}
 @media (prefers-reduced-motion:reduce){.lhero *{transition:none!important;animation:none!important}}
 @media (max-width:860px){
-  /* clean vertical stack; the circle/white-letter trick is desktop-only */
+  /* minimal mobile hero: laptop-forward, headline treatment is desktop-only */
   .lhero{min-height:auto;align-items:start}
-  .lhero .stage{width:100%;height:auto;padding:14px 20px 8px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .lhero .stage{width:100%;height:auto;padding:48px 20px 8px;display:flex;flex-direction:column;align-items:center;text-align:center}
   .lhero .circle{display:none}
-  .lhero .eyebrow-top{position:relative;left:0;top:0;transform:none;margin-bottom:4px;white-space:normal;max-width:92vw;font-size:10.5px;letter-spacing:.14em;line-height:1.5}
-  .lhero .bgword.z1{position:relative;top:0;left:0;transform:none;font-size:17vw;line-height:.82;color:var(--ink);z-index:1}
-  .lhero .side-right{position:relative;left:0;right:0;top:0;transform:none;text-align:center;color:var(--burg);margin:0;line-height:.78}
-  .lhero .side-right .big{font-size:15.5vw}
-  .lhero .side-right .sm{font-size:7vw;margin:-.04em 0}
-  .lhero .devstage{position:relative;left:0;top:0;transform:none;width:100%;max-width:400px;margin:18px auto 0}
-  .lhero-tag{display:block;max-width:31ch;margin:18px auto 0;font-family:var(--disp);font-weight:500;font-size:16.5px;line-height:1.38;color:var(--ink-soft);letter-spacing:-.005em}
+  .lhero .bgword.z1{display:none}
+  .lhero .side-right{display:none}
+  .lhero .eyebrow-top{position:relative;left:0;top:0;transform:none;margin-bottom:0;white-space:normal;max-width:92vw;font-size:10.5px;letter-spacing:.14em;line-height:1.5}
+  .lhero .devstage{position:relative;left:0;top:0;transform:none;width:100%;max-width:400px;margin:20px auto 0}
+  .lhero-tag{display:block;max-width:30ch;margin:20px auto 0;font-family:var(--disp);font-weight:500;font-size:17px;line-height:1.4;color:var(--ink-soft);letter-spacing:-.005em}
   .lhero-tag b{color:var(--burg);font-weight:600}
   .lhero .btns{position:relative;left:0;top:0;transform:none;align-items:center;gap:11px;margin-top:20px;width:100%}
   .lhero .btns .sk{width:min(86vw,340px);justify-content:center;text-align:center}
@@ -598,7 +596,16 @@ body.cs.sb{--accent:#2f4a3c;--accent2:#c0703a}
    ========================================================================== */
 .cs-main{width:min(1300px,100% - (var(--gutter) * 2));margin:0 auto;padding:clamp(14px,2vw,28px) 0;
   display:grid;grid-template-columns:1.32fr .84fr;gap:clamp(26px,3.4vw,54px);align-items:center;min-height:calc(100vh - 60px)}
-@media (max-width:900px){.cs-main{grid-template-columns:1fr;gap:18px;min-height:0;padding:12px 0 26px}}
+@media (max-width:900px){
+  .cs-main{grid-template-columns:1fr;gap:16px;min-height:0;padding:12px 0 26px}
+  /* mobile order: intro ABOVE the live frame, prev/next right under it */
+  .cs-main .cs-side{display:contents}
+  .cs-main .cs-eyebrow{order:1;margin:0}
+  .cs-main .cs-intro{order:2}
+  .cs-main .g-stage-wrap{order:3}
+  .cs-main .g-feature{order:4;margin-top:4px;border-top:0;padding-top:0}
+  .cs-main .g-list{order:5}
+}
 
 .cs-main .g-stage{position:relative;width:100%;height:min(66vh,540px);border-radius:18px;overflow:hidden;
   background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
