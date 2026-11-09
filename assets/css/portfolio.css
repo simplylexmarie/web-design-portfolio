@@ -699,3 +699,6 @@ body.cs.sb{--accent:#2f4a3c;--accent2:#c0703a}
 .foot__links a{color:rgba(255,250,243,.82)}
 .foot__links a:hover{color:#e9b7c3}
 .foot__fine{color:rgba(255,250,243,.5)}
+
+/* remove the "play with it" annotation (per Alexia) */
+.project__anno{display:none}
