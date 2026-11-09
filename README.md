@@ -3,7 +3,7 @@
 A standalone, interactive portfolio for Alexia Rucker's custom web-design work,
 designed to be linked directly in outreach emails to prospective local-business clients.
 
-**Live site:** https://simplylexmarie.github.io/web-design-portfolio/
+**Live site:** https://webdesign.simplylexmarie.com/
 
 ## What's here
 
