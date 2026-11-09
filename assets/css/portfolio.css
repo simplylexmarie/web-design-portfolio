@@ -654,3 +654,48 @@ body.cs.sb{--accent:#2f4a3c;--accent2:#c0703a}
 /* remove the little badge/sticker chips (per Alexia) */
 .project__badge{display:none}
 .price__sticker{display:none}
+
+/* ==========================================================================
+   FEATURED WORK — editorial spread (color shape + ghost name + annotation)
+   ========================================================================== */
+.project{--paccent:#6f1d35;--paccent2:#531328}
+.project--sb{--paccent:#3d5a4a;--paccent2:#24382c}
+.project__ghost{position:absolute;z-index:0;font-family:var(--disp);font-weight:600;text-transform:uppercase;
+  letter-spacing:-.03em;line-height:.8;font-size:clamp(56px,9vw,150px);color:color-mix(in srgb,var(--paccent) 7%,transparent);
+  pointer-events:none;user-select:none;top:-10%;left:-3%;white-space:nowrap}
+.project:nth-child(even) .project__ghost{left:auto;right:-3%}
+.project__media{position:relative;z-index:1}
+.project__media::before{display:none}
+.project__anno{position:absolute;z-index:3;bottom:2%;right:-2%;font-family:var(--hand);color:var(--coral);
+  font-size:clamp(20px,2.2vw,28px);line-height:1;transform:rotate(-5deg);display:inline-flex;align-items:flex-end;gap:6px}
+.project:nth-child(even) .project__anno{right:auto;left:-2%;transform:rotate(5deg)}
+.project__anno svg{width:46px;height:34px;overflow:visible}
+@media (max-width:840px){.project__anno{display:none}.project__ghost{font-size:17vw}}
+
+/* ==========================================================================
+   DISTINCT SECTION BACKGROUNDS (color-blocked, like the inspo)
+   hero=cream · work=blush · services=burgundy · offer=lavender · contact=peach
+   ========================================================================== */
+#work{background:linear-gradient(180deg,#f7e7ea 0%,#f3dde2 100%)}
+#services{background:linear-gradient(168deg,#73203a 0%,#531328 100%)}
+#offer{background:linear-gradient(180deg,#ece1f6 0%,#e3d5f2 100%)}
+#contact{background:linear-gradient(180deg,#fbeadb 0%,#f6e4d4 100%)}
+
+/* Services: light type + chips on the burgundy block */
+#services .eyebrow{color:#efb09f}
+#services .sec-head h2{color:#fff}
+#services .sec-head h2 em{color:#e9b7c3}
+#services .sec-head p{color:rgba(255,250,243,.82)}
+#services .price{background:var(--paper);border-color:rgba(255,255,255,.14);box-shadow:0 24px 50px -24px rgba(20,8,14,.6)}
+#services .price--feature{background:linear-gradient(170deg,#fff6ef,#fbe9ec)}
+
+/* soft separators between color blocks */
+#services,#offer,#contact{position:relative}
+
+/* footer: its own deep color block */
+.foot{background:linear-gradient(180deg,#531328 0%,#3d0e1e 100%);border-top:0}
+.foot__brand b{color:#fff}
+.foot__brand span{color:rgba(255,250,243,.7)}
+.foot__links a{color:rgba(255,250,243,.82)}
+.foot__links a:hover{color:#e9b7c3}
+.foot__fine{color:rgba(255,250,243,.5)}
