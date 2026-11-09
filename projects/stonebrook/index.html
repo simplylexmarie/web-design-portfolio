@@ -20,101 +20,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/portfolio.css">
 </head>
-<body class="sb">
-<a class="skip" href="#g-main">Skip to the features</a>
+<body class="cs sb" data-project="stonebrook">
+<a class="skip" href="#cs-main">Skip to the features</a>
 
-<header class="g-top">
-  <a class="g-back" href="../../#work">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<header class="cs-top">
+  <a class="back" href="../../#work">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     All work
   </a>
-  <div class="g-id">Stonebrook Carpentry · Case study</div>
-  <a class="g-visit" href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/" target="_blank" rel="noopener">Visit live site ↗</a>
+  <div class="id">Stonebrook Carpentry · Case study</div>
+  <a class="visit" href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/" target="_blank" rel="noopener">Visit live site ↗</a>
 </header>
 
-<div class="g-hero">
-  <p class="eyebrow">Interactive case study · Carpentry &amp; remodeling</p>
-  <h1>Stonebrook Carpentry</h1>
-  <p class="lead">A clean, architectural site built to turn visitors into free-estimate bookings. Every feature below is the real thing, running live from the actual website. Pick one and play with it.</p>
-</div>
-
-<main id="g-main" class="gallery">
-
+<main id="cs-main" class="cs-main">
   <div class="g-stage-wrap">
     <div class="g-stage loading">
       <span class="scrollhint" aria-hidden="true">Scroll inside to explore ↓</span>
-      <div class="g-loader" aria-hidden="true"><div class="spin"></div><span>Loading the real feature…</span></div>
-      <iframe id="g-frame" title="Live interactive feature" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="g-loader" aria-hidden="true"><div class="spin"></div></div>
+      <iframe id="g-frame" title="Live interactive feature" allow="autoplay" scrolling="no" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+  </div>
 
-    <div class="g-caption">
-      <button class="g-arrow" data-nav="prev" type="button" aria-label="Previous feature">‹</button>
-      <div class="g-cap-text" aria-live="polite">
-        <p class="k"></p>
-        <h2></h2>
-        <p></p>
+  <div class="cs-side">
+    <p class="cs-eyebrow">Interactive case study · Carpentry &amp; remodeling</p>
+    <p class="cs-intro">An interactive case study of <b>Stonebrook Carpentry</b>. Every feature below is the real thing, running live.</p>
+
+    <div class="g-feature">
+      <div class="g-fhead">
+        <span class="g-num">01</span>
+        <span class="spacer"></span>
+        <button class="g-arrow" data-nav="prev" type="button" aria-label="Previous feature">&#8249;</button>
+        <button class="g-arrow" data-nav="next" type="button" aria-label="Next feature">&#8250;</button>
       </div>
-      <button class="g-arrow" data-nav="next" type="button" aria-label="Next feature">›</button>
+      <h2 class="g-ftitle"></h2>
+      <p class="g-explain" aria-live="polite"></p>
+      <div class="g-substep" aria-label="Sequence topics">
+        <button class="prev" type="button">&#8249; Prev</button>
+        <div class="dots" role="group" aria-label="Topics"></div>
+        <button class="next" type="button">Next &#8250;</button>
+      </div>
     </div>
 
-    <!-- no within-feature stepper needed for Stonebrook; kept hidden for parity -->
-    <div class="g-substep" aria-label="Sequence topics">
-      <button class="prev" type="button">‹ Prev</button>
-      <div class="dots" role="group" aria-label="Topics"></div>
-      <button class="next" type="button">Next ›</button>
-    </div>
-
-    <div class="g-mobnav">
-      <button data-nav="prev" type="button">‹ Previous</button>
-      <button data-nav="next" type="button">Next ›</button>
+    <div class="g-list" role="group" aria-label="Choose a feature">
+      <button class="g-thumb" type="button" data-src="sb-hero.html" data-num="01" data-scroll="0" data-h="540"
+        data-title="A calm, confident first impression."
+        data-explain="The homepage opens with a settled headline, a hand-drawn underline and one strong photograph, a quiet, premium masthead. Type and spacing are tuned so the single call to action, booking a free estimate, stays the clearest thing on the screen.">
+        <span class="tn">01</span><span class="tt">Homepage design</span>
+      </button>
+      <button class="g-thumb" type="button" data-src="sb-tape.html" data-num="02" data-scroll="1" data-h="560"
+        data-title="A tape measure that tracks your scroll."
+        data-explain="Scroll inside and a yellow measuring-tape blade pulls out across the top to track your progress, a detail that ties the whole site back to the trade. The blade follows scroll position in real time, so it feels physical rather than like a generic progress bar.">
+        <span class="tn">02</span><span class="tt">Tape-measure scroll</span>
+      </button>
+      <button class="g-thumb" type="button" data-src="sb-services.html" data-num="03" data-scroll="0" data-h="560"
+        data-title="Pick a trade, see the proof."
+        data-explain="Hover or tap any service and its real project photo slides onto a stack, so visitors see proof of each trade instead of a plain list. The stack is layered and animated in the browser, which keeps it tactile and lets new work drop in without a redesign.">
+        <span class="tn">03</span><span class="tt">What we build</span>
+      </button>
+      <button class="g-thumb" type="button" data-src="sb-behind.html" data-num="04" data-scroll="1" data-h="600"
+        data-title="Three stages that stack as you go."
+        data-explain="Scroll through a real bathroom remodel and three stages stack over each other, from studs to finished stone, telling the build in order. Each stage is a sticky layer that slides up over the last, a simple structure that reads like a short, satisfying sequence.">
+        <span class="tn">04</span><span class="tt">Behind the walls</span>
+      </button>
+      <button class="g-thumb" type="button" data-src="sb-work.html" data-num="05" data-scroll="0" data-h="520"
+        data-title="Real projects, opened right here."
+        data-explain="Projects are grouped by type, and choosing one opens its full set of real photos right here inside the portfolio, no trip to another site. It loads the live galleries on demand, so the showcase stays fast and always current with their latest jobs.">
+        <span class="tn">05</span><span class="tt">Latest work</span>
+      </button>
     </div>
   </div>
-
-  <div class="g-thumbs" role="group" aria-label="Choose a feature to preview">
-    <button class="g-thumb" type="button"
-      data-src="sb-hero.html" data-mode="fixed" data-h="540" data-hm="460" data-scroll="0"
-      data-kicker="Homepage design" data-title="A calm, confident first impression."
-      data-desc="The real hero: a settled headline, a hand-drawn underline, and a photograph that does the talking.">
-      <span class="tn">01</span><span class="tt">Homepage design</span>
-    </button>
-    <button class="g-thumb" type="button"
-      data-src="sb-tape.html" data-mode="scroll" data-h="560" data-hm="480" data-scroll="1"
-      data-kicker="Tape-measure scroll progress" data-title="A tape measure that tracks your scroll."
-      data-desc="Scroll the panel and the measuring-tape blade pulls out across the top, the way a build progresses.">
-      <span class="tn">02</span><span class="tt">Tape-measure scroll</span>
-    </button>
-    <button class="g-thumb" type="button"
-      data-src="sb-services.html" data-mode="auto" data-h="560" data-hm="560" data-scroll="0"
-      data-kicker="What we build" data-title="Pick a trade, see the proof."
-      data-desc="Hover or tap any service and its real photo slides onto the stack.">
-      <span class="tn">03</span><span class="tt">What we build</span>
-    </button>
-    <button class="g-thumb" type="button"
-      data-src="sb-behind.html" data-mode="scroll" data-h="600" data-hm="520" data-scroll="1"
-      data-kicker="A peek behind the walls" data-title="Three stages that stack as you go."
-      data-desc="Scroll through a real bathroom remodel. Each stage slides up over the last, from studs to finished stone.">
-      <span class="tn">04</span><span class="tt">Behind the walls</span>
-    </button>
-    <button class="g-thumb" type="button"
-      data-src="sb-work.html" data-mode="auto" data-h="520" data-hm="520" data-scroll="0"
-      data-kicker="See our latest work" data-title="Real projects, by category."
-      data-desc="Pick a project type to open the full set of real photos from homes around western Wisconsin.">
-      <span class="tn">05</span><span class="tt">Latest work</span>
-    </button>
-  </div>
-
 </main>
 
-<footer class="g-foot">
+<footer class="cs-foot">
   <p class="fh">Want one like this?</p>
-  <h2>Let's build yours.</h2>
+  <h2>Let's build <em>yours.</em></h2>
   <div class="row">
-    <a class="btn btn--solid" href="../../#offer">Get a free rough draft</a>
-    <a class="btn btn--ghost" href="https://brilliantimpact-media.github.io/stonebrook-carpentry-website/" target="_blank" rel="noopener">Visit the live site ↗</a>
-    <a class="btn btn--ghost" href="../../">← Back to portfolio</a>
+    <a class="sk b6" href="../../#offer"><span class="lbl">Get a free rough draft</span></a>
+    <a class="sk b5" href="../../#work" data-sketch="double"><span class="fill"></span><svg class="ov"></svg><span class="lbl">&#8592; Back to all work</span></a>
   </div>
 </footer>
 
-<script src="../../assets/js/gallery.js" defer></script>
+<!-- in-portfolio project viewer for "See our latest work" -->
+<div class="cs-viewer" id="csViewer" aria-hidden="true" role="dialog" aria-label="Project gallery">
+  <div class="cs-viewer__bar">
+    <span class="cs-viewer__title" id="csViewerTitle">Project</span>
+    <button class="cs-viewer__close" id="csViewerClose" type="button">Close &#10005;</button>
+  </div>
+  <iframe id="csViewerFrame" title="Project gallery" src="about:blank"></iframe>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+<script src="../../assets/js/sketch.js"></script>
+<script src="../../assets/js/gallery.js"></script>
 </body>
 </html>

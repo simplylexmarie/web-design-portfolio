@@ -66,6 +66,8 @@
   var slides = [].slice.call(document.querySelectorAll(".lhero .mini .slide")), introslide = document.getElementById("introslide"), cur = 0;
   function show(i) { cur = (i + slides.length) % slides.length; slides.forEach(function (s, k) { s.classList.toggle("on", k === cur); }); }
   function toAboutMe() { if (introslide) introslide.classList.remove("on"); show(0); }
+  var autoTimer = null;
+  function scheduleAuto() { clearTimeout(autoTimer); autoTimer = setTimeout(function () { show(cur + 1); scheduleAuto(); }, 10000); }
 
   // ---- GSAP intro + parallax ----
   var G = window.gsap, hero = document.getElementById("hero"), nav = document.querySelector(".nav");
@@ -87,7 +89,7 @@
     });
     hero.addEventListener("pointerleave", function () { if (!active) return; qx(0); qy(0); qtx(0); qty(0); });
   }
-  function finishIntro() { if (done) return; done = true; active = true; initParallax(); }
+  function finishIntro() { if (done) return; done = true; active = true; initParallax(); scheduleAuto(); }
 
   function showHero() {
     if (G) { G.set(".device", { clearProps: "transform" }); G.set(HIDE, { opacity: 1, clearProps: "transform" }); }
@@ -113,7 +115,7 @@
   }
   function skip() { if (introTL) introTL.progress(1); showHero(); finishIntro(); }
 
-  scrclick.addEventListener("click", function () { if (active) show(cur + 1); });
+  scrclick.addEventListener("click", function () { if (active) { show(cur + 1); scheduleAuto(); } });
   window.addEventListener("load", function () { runIntro(); setTimeout(function () { if (!done) skip(); }, 6000); });
   window.addEventListener("wheel", function () { if (!done) skip(); }, { passive: true });
   window.addEventListener("touchmove", function () { if (!done) skip(); }, { passive: true });

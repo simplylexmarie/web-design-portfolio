@@ -30,3 +30,27 @@
 
   items.forEach(function (el) { io.observe(el); });
 })();
+
+/* Back-nav memory: remember homepage scroll when opening a project, and
+   restore it (landing back in the Work section) when returning. */
+(function () {
+  "use strict";
+  try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
+  // save position when heading into a project
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="projects/"]');
+    if (!a) return;
+    try { sessionStorage.setItem("homeScroll", String(window.scrollY)); } catch (err) {}
+  });
+  // restore on return from a project page
+  window.addEventListener("load", function () {
+    var fromProject = (document.referrer || "").indexOf("/projects/") > -1;
+    var saved = null;
+    try { saved = sessionStorage.getItem("homeScroll"); } catch (e) {}
+    if (fromProject && saved !== null) {
+      var y = parseInt(saved, 10);
+      // override the #work anchor jump with the exact remembered position
+      requestAnimationFrame(function () { window.scrollTo(0, y); setTimeout(function () { window.scrollTo(0, y); }, 60); });
+    }
+  });
+})();

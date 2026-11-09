@@ -9,6 +9,8 @@
   :root{--header-h:0px}
   ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(120,90,80,.35);border-radius:8px}
   main,section{max-width:100%}body{overflow-x:hidden}
+  .work-ctas{display:none!important}           /* external CTAs removed; viewer stays in-portfolio */
+  .mtile{cursor:pointer}
 </style>
 </head>
 <body class="">
@@ -77,5 +79,18 @@ addEventListener('load',post);addEventListener('resize',post);
 if(window.ResizeObserver){new ResizeObserver(post).observe(document.body);}
 setTimeout(post,200);setTimeout(post,800);setTimeout(post,1800);
 document.addEventListener('click',function(){setTimeout(post,60);setTimeout(post,500);});})();
+</script>
+<script>
+/* Keep visitors inside the portfolio: open a category's gallery in the parent's
+   in-portfolio viewer instead of navigating to the live site in a new tab. */
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('.mtile'); if(!a)return;
+    e.preventDefault(); e.stopPropagation();
+    var url; try{url=new URL(a.getAttribute('href'),document.baseURI).href;}catch(err){url=a.href;}
+    var t=a.querySelector('strong');
+    try{parent.postMessage({csOpenGallery:url,csTitle:t?t.textContent.trim():'Project'},'*');}catch(err){}
+  },true);
+})();
 </script>
 </body></html>

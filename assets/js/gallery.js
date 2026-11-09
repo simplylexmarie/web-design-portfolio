@@ -1,173 +1,177 @@
 /* ==========================================================================
-   Interactive project gallery — one large stage, selectable features.
-   Selecting a feature swaps the stage iframe (the real, live component) and
-   updates the caption. Prev/next + keyboard + a within-feature stepper for
-   the grazing-cow sequence. Progressive enhancement over plain links.
+   Case-study gallery v2 — side-by-side, single-viewport, FIXED frame.
+   The stage keeps one constant size across all 5 features (no bouncing).
+   "Fit" features render at a desktop design width and scale to fit the frame;
+   genuinely scroll-driven features adapt + scroll inside the same fixed frame.
+   Selected feature + project scroll position are preserved for back-nav.
    ========================================================================== */
 (function () {
   "use strict";
-
-  var stageWrap = document.querySelector(".g-stage-wrap");
   var stage = document.querySelector(".g-stage");
   var frame = document.getElementById("g-frame");
   var thumbs = Array.prototype.slice.call(document.querySelectorAll(".g-thumb"));
   if (!stage || !frame || !thumbs.length) return;
 
-  var capK = document.querySelector(".g-cap-text .k");
-  var capH = document.querySelector(".g-cap-text h2");
-  var capP = document.querySelector(".g-cap-text p:not(.k)");
+  var numEl = document.querySelector(".g-num");
+  var titleEl = document.querySelector(".g-ftitle");
+  var explainEl = document.querySelector(".g-explain");
   var prevBtns = Array.prototype.slice.call(document.querySelectorAll("[data-nav='prev']"));
   var nextBtns = Array.prototype.slice.call(document.querySelectorAll("[data-nav='next']"));
   var substep = document.querySelector(".g-substep");
-
-  var mobileMQ = window.matchMedia("(max-width:640px)");
+  var project = document.body.getAttribute("data-project") || "project";
+  var DESIGN_W = 1080;
   var current = -1;
+  var autoHeights = {}; // reported heights for auto features
 
   function fileOf(src) { return (src || "").split("/").pop().split("?")[0]; }
-
   function featureAt(i) {
     var t = thumbs[i];
     return {
       src: t.getAttribute("data-src"),
-      mode: t.getAttribute("data-mode") || "fixed",   // fixed | auto | scroll
-      h: parseInt(t.getAttribute("data-h"), 10) || 560,
-      hm: parseInt(t.getAttribute("data-hm"), 10) || 480,
       scroll: t.getAttribute("data-scroll") === "1",
       seqnav: t.getAttribute("data-seqnav") === "1",
+      h: parseInt(t.getAttribute("data-h"), 10) || 600,
+      num: t.getAttribute("data-num") || (i + 1 < 10 ? "0" : "") + (i + 1),
       kicker: t.getAttribute("data-kicker") || "",
       title: t.getAttribute("data-title") || "",
-      desc: t.getAttribute("data-desc") || ""
+      explain: t.getAttribute("data-explain") || ""
     };
   }
 
-  function provisionalHeight(f) {
-    return (mobileMQ.matches ? f.hm : f.h) + "px";
+  // ---- fit the frame content to the fixed stage ----
+  function fitFrame() {
+    var f = featureAt(current); if (!f) return;
+    var W = stage.clientWidth, H = stage.clientHeight;
+    if (f.scroll) {
+      // adapt: fill the fixed frame, scroll inside it
+      frame.style.transform = "translate(-50%,-50%) scale(1)";
+      frame.style.width = W + "px";
+      frame.style.height = H + "px";
+      frame.setAttribute("scrolling", "yes");
+    } else {
+      // scale to fit: render at desktop width, scale down to the frame
+      var contentH = autoHeights[fileOf(frame.src)] || f.h;
+      frame.style.width = DESIGN_W + "px";
+      frame.style.height = contentH + "px";
+      frame.setAttribute("scrolling", "no");
+      var s = Math.min(W / DESIGN_W, H / contentH);
+      frame.style.transform = "translate(-50%,-50%) scale(" + s + ")";
+    }
   }
 
-  function select(i, focusFrame) {
-    if (i < 0 || i >= thumbs.length || i === current) {
-      if (i === current) return;
-    }
+  function select(i, opts) {
+    opts = opts || {};
+    if (i < 0 || i >= thumbs.length) return;
+    if (i === current && !opts.force) return;
     current = i;
     var f = featureAt(i);
 
-    // thumbs active state + scroll active thumb into view
     thumbs.forEach(function (t, k) {
       var on = k === i;
       t.setAttribute("aria-current", on ? "true" : "false");
       t.setAttribute("tabindex", on ? "0" : "-1");
     });
-    try {
-      thumbs[i].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    } catch (e) {
-      thumbs[i].scrollIntoView();
-    }
 
-    // caption
-    if (capK) capK.textContent = (i + 1 < 10 ? "0" : "") + (i + 1) + " · " + f.kicker;
-    if (capH) capH.textContent = f.title;
-    if (capP) capP.textContent = f.desc;
+    if (numEl) numEl.textContent = f.num;
+    if (titleEl) titleEl.textContent = f.title;
+    if (explainEl) explainEl.textContent = f.explain;
 
-    // stage swap
     stage.classList.add("loading");
     stage.classList.toggle("is-scroll", !!f.scroll);
-    if (stageWrap) stageWrap.classList.toggle("show-hint", !!f.scroll);
-    frame.setAttribute("scrolling", f.scroll ? "yes" : "no");
-    frame.style.height = provisionalHeight(f);
     frame.title = f.title + " — live interactive feature";
     frame.src = f.src;
+    fitFrame();
 
-    // within-feature stepper (grazing cow)
     if (substep) {
       substep.classList.toggle("on", !!f.seqnav);
       if (f.seqnav) resetSubstep();
     }
-
-    // nav disabled states
     prevBtns.forEach(function (b) { b.disabled = i === 0; });
     nextBtns.forEach(function (b) { b.disabled = i === thumbs.length - 1; });
 
-    if (focusFrame) { try { frame.focus(); } catch (e) {} }
+    try { sessionStorage.setItem("feat:" + project, String(i)); } catch (e) {}
+    if (opts.focus) { try { frame.focus(); } catch (e) {} }
   }
 
-  frame.addEventListener("load", function () {
-    stage.classList.remove("loading");
-  });
+  frame.addEventListener("load", function () { stage.classList.remove("loading"); fitFrame(); });
 
-  // auto-size iframes that report their own height (same-origin fragments)
+  // auto-height features report their height; refit
   window.addEventListener("message", function (e) {
     var d = e.data || {};
     if (!d.shFrame || typeof d.shHeight !== "number") return;
-    var f = featureAt(current);
-    if (f && f.mode === "auto" && fileOf(frame.src) === d.shFrame) {
-      frame.style.height = Math.max(220, d.shHeight) + "px";
-    }
+    autoHeights[d.shFrame] = Math.max(220, d.shHeight);
+    if (fileOf(frame.src) === d.shFrame) fitFrame();
   });
+  window.addEventListener("resize", fitFrame);
 
-  // keep fixed/scroll heights responsive
-  function applyResponsiveHeight() {
-    var f = featureAt(current);
-    if (f && f.mode !== "auto") frame.style.height = provisionalHeight(f);
-  }
-  window.addEventListener("resize", applyResponsiveHeight);
+  prevBtns.forEach(function (b) { b.addEventListener("click", function () { select(current - 1, { focus: true }); }); });
+  nextBtns.forEach(function (b) { b.addEventListener("click", function () { select(current + 1, { focus: true }); }); });
 
-  // prev / next
-  prevBtns.forEach(function (b) { b.addEventListener("click", function () { select(current - 1, true); }); });
-  nextBtns.forEach(function (b) { b.addEventListener("click", function () { select(current + 1, true); }); });
-
-  // thumb clicks + roving arrow keys
   thumbs.forEach(function (t, k) {
-    t.addEventListener("click", function () { select(k, false); });
+    t.addEventListener("click", function () { select(k); });
     t.addEventListener("keydown", function (ev) {
-      if (ev.key === "ArrowRight" || ev.key === "ArrowDown") {
-        ev.preventDefault(); var n = Math.min(thumbs.length - 1, k + 1); thumbs[n].focus(); select(n, false);
-      } else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") {
-        ev.preventDefault(); var p = Math.max(0, k - 1); thumbs[p].focus(); select(p, false);
-      } else if (ev.key === "Home") {
-        ev.preventDefault(); thumbs[0].focus(); select(0, false);
-      } else if (ev.key === "End") {
-        ev.preventDefault(); thumbs[thumbs.length - 1].focus(); select(thumbs.length - 1, false);
-      }
+      if (ev.key === "ArrowDown" || ev.key === "ArrowRight") { ev.preventDefault(); var n = Math.min(thumbs.length - 1, k + 1); thumbs[n].focus(); select(n); }
+      else if (ev.key === "ArrowUp" || ev.key === "ArrowLeft") { ev.preventDefault(); var p = Math.max(0, k - 1); thumbs[p].focus(); select(p); }
+      else if (ev.key === "Home") { ev.preventDefault(); thumbs[0].focus(); select(0); }
+      else if (ev.key === "End") { ev.preventDefault(); thumbs[thumbs.length - 1].focus(); select(thumbs.length - 1); }
     });
   });
 
-  // ---- within-feature stepper (grazing-cow four topics) -------------------
+  // ---- within-feature stepper (grazing cow) ----
   var subCur = 0, subDots = [];
-  function resetSubstep() {
-    subCur = 0;
-    subDots = Array.prototype.slice.call(substep.querySelectorAll(".dot"));
-    paintSubstep();
-  }
-  function paintSubstep() {
-    subDots.forEach(function (d, k) { d.setAttribute("aria-current", k === subCur ? "true" : "false"); });
-  }
+  function resetSubstep() { subCur = 0; subDots = Array.prototype.slice.call(substep.querySelectorAll(".dot")); paintSubstep(); }
+  function paintSubstep() { subDots.forEach(function (d, k) { d.setAttribute("aria-current", k === subCur ? "true" : "false"); }); }
   function goSub(i) {
-    subCur = Math.max(0, Math.min(subDots.length - 1, i));
-    paintSubstep();
-    if (frame.contentWindow) {
-      try { frame.contentWindow.postMessage({ seqGoto: subCur }, "*"); } catch (e) {}
-    }
+    subCur = Math.max(0, Math.min(subDots.length - 1, i)); paintSubstep();
+    if (frame.contentWindow) { try { frame.contentWindow.postMessage({ seqGoto: subCur }, "*"); } catch (e) {} }
   }
   if (substep) {
     var sp = substep.querySelector(".prev"), sn = substep.querySelector(".next");
     if (sp) sp.addEventListener("click", function () { goSub(subCur - 1); });
     if (sn) sn.addEventListener("click", function () { goSub(subCur + 1); });
-    substep.querySelectorAll(".dot").forEach(function (d) {
-      d.addEventListener("click", function () { goSub(+d.getAttribute("data-i")); });
+    substep.querySelectorAll(".dot").forEach(function (d) { d.addEventListener("click", function () { goSub(+d.getAttribute("data-i")); }); });
+  }
+
+  // ---- in-portfolio project viewer (Stonebrook "See our latest work") ----
+  var viewer = document.getElementById("csViewer");
+  if (viewer) {
+    var vFrame = document.getElementById("csViewerFrame");
+    var vTitle = document.getElementById("csViewerTitle");
+    var vClose = document.getElementById("csViewerClose");
+    function openViewer(url, title) {
+      if (!vFrame) return;
+      vFrame.src = url;
+      if (vTitle) vTitle.textContent = title || "Project";
+      viewer.classList.add("open");
+      viewer.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (vClose) try { vClose.focus(); } catch (e) {}
+    }
+    function closeViewer() {
+      viewer.classList.remove("open");
+      viewer.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      setTimeout(function () { if (vFrame) vFrame.src = "about:blank"; }, 300);
+    }
+    if (vClose) vClose.addEventListener("click", closeViewer);
+    viewer.addEventListener("click", function (e) { if (e.target === viewer) closeViewer(); });
+    window.addEventListener("keydown", function (e) { if (e.key === "Escape" && viewer.classList.contains("open")) closeViewer(); });
+    window.addEventListener("message", function (e) {
+      var d = e.data || {};
+      if (d && d.csOpenGallery) openViewer(d.csOpenGallery, d.csTitle);
     });
   }
 
-  // deep link: #feature-N or #<fragment-name>
+  // ---- initial feature (hash > saved > first), without scrolling the page ----
   function startIndex() {
     var h = (location.hash || "").replace(/^#/, "");
-    if (!h) return 0;
-    var byNum = h.match(/^feature-(\d+)$/);
-    if (byNum) { var n = parseInt(byNum[1], 10) - 1; if (n >= 0 && n < thumbs.length) return n; }
-    for (var i = 0; i < thumbs.length; i++) {
-      if (fileOf(thumbs[i].getAttribute("data-src")) === (h.indexOf(".html") > -1 ? h : h + ".html")) return i;
+    if (h) {
+      var byNum = h.match(/^feature-(\d+)$/);
+      if (byNum) { var n = parseInt(byNum[1], 10) - 1; if (n >= 0 && n < thumbs.length) return n; }
+      for (var i = 0; i < thumbs.length; i++) { if (fileOf(thumbs[i].getAttribute("data-src")) === (h.indexOf(".html") > -1 ? h : h + ".html")) return i; }
     }
+    try { var s = sessionStorage.getItem("feat:" + project); if (s !== null) { var si = parseInt(s, 10); if (si >= 0 && si < thumbs.length) return si; } } catch (e) {}
     return 0;
   }
-
-  select(startIndex(), false);
+  select(startIndex(), { force: true });
 })();
