@@ -62,36 +62,44 @@
 
 <main id="top">
 
-  <!-- ===== HERO (interim; full redesign pending Alexia's direction) ===== -->
-  <section class="hero">
-    <div class="shell hero__grid">
-      <div class="hero__copy">
-        <span class="hero__kicker eyebrow" data-reveal><span class="dot" aria-hidden="true"></span>Custom websites · St. Petersburg, FL</span>
-        <h1 data-reveal>Websites that<br><span class="ul">work<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 70 4, 150 4, 297 11" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span> as<br>hard as <span class="accent">you do.</span></h1>
-        <p class="hero__lede" data-reveal style="--reveal-delay:.1s">Hi, I'm Alexia. I design <b>modern, mobile-first websites</b> for local businesses, and every site is fully custom, made to represent exactly who you are. You're so much more than a template. Clean, fast, and built to turn visitors into real calls and customers.</p>
-        <div class="hero__cta" data-reveal style="--reveal-delay:.2s">
-          <a class="sk b6" href="#work"><span class="lbl">See my work</span></a>
-          <a class="sk b5" data-sketch="double" href="#offer"><span class="fill"></span><svg class="ov"></svg><span class="lbl">Get a free rough draft</span></a>
+  <!-- ===== HERO (interactive laptop) ===== -->
+  <section class="lhero" id="hero">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="stage" id="stageEl">
+      <div class="eyebrow-top">Custom web design · St. Petersburg, FL</div>
+      <div class="bgword z1" aria-hidden="true">Nothing</div>
+
+      <div class="circle" aria-hidden="true">
+        <div class="circle__inner" id="circleInner">
+          <div class="bgword">Nothing</div>
         </div>
-        <p class="hero__sig" data-reveal>made by hand in St. Pete</p>
       </div>
 
-      <figure class="hero__art" data-reveal style="--reveal-delay:.15s">
-        <span class="hero__tape" aria-hidden="true"></span>
-        <div class="hero__frame">
-          <img src="assets/img/portrait.jpg" width="416" height="520" alt="Alexia Rucker, web designer, smiling portrait" fetchpriority="high">
-        </div>
-        <img class="hero__flower" src="assets/img/flower.png" alt="" aria-hidden="true">
-      </figure>
-    </div>
+      <h1 class="side-right"><span class="big">off</span><span class="sm">the</span><span class="big">shelf.</span></h1>
 
-    <div class="shell">
-      <div class="strip" data-reveal>
-        <span>Mobile-first</span>
-        <span>Fully custom design</span>
-        <span>Fast &amp; Google-ready</span>
-        <span>Built to convert</span>
-        <span>Local &amp; personal</span>
+      <div class="devstage">
+        <div class="device" id="device">
+          <img src="assets/img/laptop-front.webp" alt="A laptop showing a little about Alexia" id="lap">
+          <div class="screen" id="screen">
+            <div class="mini">
+              <div class="introslide on" id="introslide"><div class="it">Websites built <em>custom.</em></div></div>
+              <div class="slide s0" data-i="0">
+                <img src="assets/img/portrait.jpg" alt="">
+                <div class="t"><span class="k">Hi there &#10022;</span><h3>I'm <em>Alexia.</em></h3><p>Web designer in St. Pete. I build fully custom sites for local businesses.</p></div>
+              </div>
+              <div class="slide s1" data-i="1"><div><span class="k">A little about me</span><p>Marketing grad turned designer. Every site starts from a blank page, shaped around you.</p></div></div>
+              <div class="slide s2" data-i="2"><p>"You're so much more than a template."</p></div>
+              <div class="slide s3" data-i="3"><div><span class="k">Like what you see?</span><h3>Let's build yours.</h3><span class="go">Get a free rough draft &rarr;</span></div></div>
+            </div>
+            <span class="flip" aria-hidden="true">click me &#8635;</span>
+          </div>
+          <button class="scrclick" id="scrclick" aria-label="Flip through a little about Alexia"></button>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a class="sk b6" href="#work"><span class="lbl">See my work</span></a>
+        <a class="sk b5" href="#offer" data-sketch="double"><span class="fill"></span><svg class="ov"></svg><span class="lbl">Free rough draft</span></a>
       </div>
     </div>
   </section>
@@ -247,7 +255,9 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="assets/js/sketch.js"></script>
+<script src="assets/js/hero.js"></script>
 <script src="assets/js/portfolio.js" defer></script>
 </body>
 </html>

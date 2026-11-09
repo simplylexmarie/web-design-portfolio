@@ -453,3 +453,70 @@ body.sb .g-thumb[aria-current="true"]::after{background:#3d5a4a}
 .c3__lt em{font-style:italic;color:var(--burg)}
 .c3__content p{max-width:46ch;color:var(--ink-soft);font-size:clamp(15px,1.3vw,17.5px)}
 .c3__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+
+/* ==========================================================================
+   LAPTOP HERO (interactive, GSAP) — replaces the interim hero
+   ========================================================================== */
+.lhero{position:relative;min-height:100vh;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(80% 70% at 40% 60%,rgba(205,184,230,.2),transparent 65%),linear-gradient(160deg,#f6eddf,#f1e4d2)}
+.lhero .grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+.lhero .stage{position:relative;z-index:3;width:min(1120px,95vw);height:min(84vh,680px)}
+.lhero .bgword{position:absolute;left:49%;top:1%;transform:translateX(-50%);
+  font-family:var(--disp);font-weight:600;font-size:clamp(84px,17.5vw,250px);line-height:.8;letter-spacing:-.04em;
+  text-transform:uppercase;color:var(--ink);white-space:nowrap;pointer-events:none}
+.lhero .bgword.z1{z-index:1}
+.lhero .circle{position:absolute;right:-7%;top:-20%;width:min(820px,68%);aspect-ratio:1;border-radius:50%;z-index:2;overflow:hidden;
+  background:radial-gradient(62% 62% at 46% 46%,#7a2238,#5a1329 72%,#4f1024)}
+.lhero .circle__inner{position:absolute;pointer-events:none}
+.lhero .circle__inner .bgword{color:#fff}
+.lhero .devstage{position:absolute;left:49%;top:55%;transform:translate(-50%,-50%);width:min(720px,74%);perspective:1600px;z-index:3}
+.lhero .device{position:relative;width:100%;transform-style:preserve-3d;will-change:transform}
+.lhero .device img{display:block;width:100%;height:auto;filter:drop-shadow(0 44px 52px rgba(30,10,18,.5))}
+.lhero .screen{position:absolute;top:0;left:0;transform-origin:0 0;overflow:hidden;background:var(--paper)}
+.lhero .screen .mini{position:absolute;inset:0}
+.lhero .slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease;display:grid;overflow:hidden}
+.lhero .slide.on{opacity:1}
+.lhero .slide .k{font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.lhero .s0{grid-template-columns:44% 1fr;background:var(--paper)}
+.lhero .s0 img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:none}
+.lhero .s0 .t{padding:0 7%;display:flex;flex-direction:column;justify-content:center;text-align:left}
+.lhero .s0 .t .k{color:var(--coral);font-size:calc(var(--sw)/44)}
+.lhero .s0 .t h3{font-family:var(--disp);font-weight:600;font-size:calc(var(--sw)/16);line-height:1;color:var(--burg);margin:.2em 0 .25em}
+.lhero .s0 .t h3 em{font-style:italic}
+.lhero .s0 .t p{font-size:calc(var(--sw)/42);color:var(--soft);line-height:1.4}
+.lhero .s1{background:var(--burg);color:#f4e4ea;place-content:center;text-align:left;padding:0 9%}
+.lhero .s1 .k{color:#e6b7c4;font-size:calc(var(--sw)/44)}
+.lhero .s1 p{font-family:var(--disp);font-weight:500;font-size:calc(var(--sw)/23);line-height:1.25;margin-top:.5em}
+.lhero .s2{background:linear-gradient(140deg,#e8743d,#d8542a);color:#fff;place-content:center;text-align:center;padding:0 9%}
+.lhero .s2 p{font-family:var(--disp);font-style:italic;font-weight:500;font-size:calc(var(--sw)/18);line-height:1.08}
+.lhero .s3{background:linear-gradient(140deg,#efe4f8,#dcc8f0);color:var(--burg-deep);place-content:center;text-align:center;padding:0 9%}
+.lhero .s3 .k{color:var(--burg);font-size:calc(var(--sw)/44)}
+.lhero .s3 h3{font-family:var(--disp);font-weight:600;font-size:calc(var(--sw)/16);margin-top:.2em}
+.lhero .s3 .go{display:inline-block;margin-top:.7em;background:var(--burg);color:#fff;font-weight:600;font-size:calc(var(--sw)/46);padding:.6em 1.2em;border-radius:40px}
+.lhero .introslide{position:absolute;inset:0;z-index:2;display:grid;place-content:center;text-align:center;background:var(--paper);padding:0 8%;opacity:0;transition:opacity .5s ease}
+.lhero .introslide.on{opacity:1}
+.lhero .introslide .it{font-family:var(--disp);font-weight:600;font-size:calc(var(--sw)/11);line-height:.98;letter-spacing:-.02em;color:var(--ink)}
+.lhero .introslide .it em{font-style:italic;color:var(--burg)}
+.lhero .flip{position:absolute;right:3.5%;bottom:3.5%;z-index:6;font-family:var(--hand);font-size:calc(var(--sw)/32);color:var(--soft);pointer-events:none}
+.lhero .scrclick{position:absolute;z-index:7;cursor:pointer;background:transparent;border:0}
+.lhero .side-right{position:absolute;left:75.5%;right:auto;top:49%;transform:translateY(-50%);z-index:5;text-align:left;color:#fff;
+  font-family:var(--disp);font-style:italic;font-weight:500;line-height:.9}
+.lhero .side-right .big{display:block;font-size:clamp(39px,7.4vw,99px)}
+.lhero .side-right .sm{display:block;font-size:clamp(23px,3.45vw,46px);font-style:italic;opacity:.92;margin:.26em 0 -.2em}
+.lhero .eyebrow-top{position:absolute;left:49%;top:-6%;transform:translateX(-50%);z-index:6;
+  font-weight:700;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);white-space:nowrap}
+.lhero .btns{position:absolute;left:1%;top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:13px;align-items:flex-start}
+@media (prefers-reduced-motion:reduce){.lhero *{transition:none!important;animation:none!important}}
+@media (max-width:860px){
+  /* clean vertical stack; the circle/white-letter trick is desktop-only */
+  .lhero .stage{height:auto;padding:16px 0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .lhero .circle{display:none}
+  .lhero .eyebrow-top{position:relative;left:0;top:0;transform:none;margin-bottom:10px}
+  .lhero .bgword.z1{position:relative;top:0;left:0;transform:none;font-size:14.5vw;line-height:.86;color:var(--ink);z-index:1}
+  .lhero .side-right{position:relative;left:0;right:0;top:0;transform:none;text-align:center;color:var(--burg);margin:6px 0 2px;line-height:.9}
+  .lhero .side-right .big{font-size:13.5vw}
+  .lhero .side-right .sm{font-size:7vw;margin:.04em 0}
+  .lhero .devstage{position:relative;left:0;top:0;transform:none;width:96%;margin:12px auto 0}
+  .lhero .btns{position:relative;left:0;top:0;transform:none;align-items:center;margin-top:18px}
+}
