@@ -71,7 +71,7 @@
 
   // ---- GSAP intro + parallax ----
   var G = window.gsap, hero = document.getElementById("hero"), nav = document.querySelector(".nav");
-  var active = false, done = false, introTL = null;
+  var active = false, done = false, started = false, introTL = null;
   var HIDE = [".nav", ".eyebrow-top", ".bgword", ".circle", ".side-right", ".lhero .btns", ".devstage"];
   if (G) G.set(HIDE, { opacity: 0 });
 
@@ -116,7 +116,22 @@
   function skip() { if (introTL) introTL.progress(1); showHero(); finishIntro(); }
 
   scrclick.addEventListener("click", function () { if (active) { show(cur + 1); scheduleAuto(); } });
-  window.addEventListener("load", function () { runIntro(); setTimeout(function () { if (!done) skip(); }, 6000); });
+
+  // Start the intro as soon as the LAPTOP is ready and placed, rather than
+  // waiting for window.load (which also waits on the big below-the-fold
+  // screenshots). This makes the zoom-in-to-laptop open seamlessly.
+  function maybeStart() {
+    if (started || done) return;
+    placeAll();
+    if (!scrclick.getBoundingClientRect().width) return; // laptop not placed yet
+    started = true;
+    runIntro();
+  }
+  if (lap.complete) maybeStart();
+  lap.addEventListener("load", maybeStart);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(maybeStart);
+  document.addEventListener("DOMContentLoaded", maybeStart);
+  window.addEventListener("load", function () { maybeStart(); setTimeout(function () { if (!done) skip(); }, 4000); });
   window.addEventListener("wheel", function () { if (!done) skip(); }, { passive: true });
   window.addEventListener("touchmove", function () { if (!done) skip(); }, { passive: true });
 })();

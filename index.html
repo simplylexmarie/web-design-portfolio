@@ -32,6 +32,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/portfolio.css">
 
+<!-- Hold the hero hidden until the zoom-in intro is ready, so it never flashes
+     the full layout first. Fails safe: revealed on DOMContentLoaded + a timeout. -->
+<style>html.pre-hero .lhero .stage>*{opacity:0}</style>
+<script>
+  document.documentElement.classList.add('pre-hero');
+  var _reveal=function(){document.documentElement.classList.remove('pre-hero');};
+  document.addEventListener('DOMContentLoaded',_reveal);
+  setTimeout(_reveal,3000);
+</script>
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
