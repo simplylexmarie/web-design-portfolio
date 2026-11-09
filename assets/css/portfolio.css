@@ -689,8 +689,21 @@ body.cs.sb{--accent:#2f4a3c;--accent2:#c0703a}
 #services .price{background:var(--paper);border-color:rgba(255,255,255,.14);box-shadow:0 24px 50px -24px rgba(20,8,14,.6)}
 #services .price--feature{background:linear-gradient(170deg,#fff6ef,#fbe9ec)}
 
-/* soft separators between color blocks */
-#services,#offer,#contact{position:relative}
+/* soft wavy dividers between color blocks: each block's previous color
+   drips down over the top edge in a gentle wave (torn-paper feel) */
+#work,#services,#offer,#contact,.foot{position:relative}
+#work::before,#services::before,#offer::before,#contact::before,.foot::before{
+  content:"";position:absolute;left:-1px;right:-1px;top:0;height:42px;z-index:1;pointer-events:none;
+  background-color:var(--dvc);
+  -webkit-mask:var(--wave) top/100% 100% no-repeat;mask:var(--wave) top/100% 100% no-repeat;
+}
+:root{--wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 48' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 0 H1200 V24 Q1050 46 900 27 T600 27 T300 27 T0 27 Z'/%3E%3C/svg%3E")}
+#work{--dvc:#f1e4d2}
+#services{--dvc:#f3dde2}
+#offer{--dvc:#531328}
+#contact{--dvc:#e3d5f2}
+.foot{--dvc:#f6e4d4}
+@media (max-width:620px){#work::before,#services::before,#offer::before,#contact::before,.foot::before{height:28px}}
 
 /* footer: its own deep color block */
 .foot{background:linear-gradient(180deg,#531328 0%,#3d0e1e 100%);border-top:0}

@@ -19,7 +19,8 @@
   var nextBtns = Array.prototype.slice.call(document.querySelectorAll("[data-nav='next']"));
   var substep = document.querySelector(".g-substep");
   var project = document.body.getAttribute("data-project") || "project";
-  var DESIGN_W = 1080;
+  var DESIGN_W = 1040;
+  var FILL = 1.06; // slight overscale so the feature hugs the frame (stage clips the sliver)
   var current = -1;
   var autoHeights = {}; // reported heights for auto features
 
@@ -54,7 +55,7 @@
       frame.style.width = DESIGN_W + "px";
       frame.style.height = contentH + "px";
       frame.setAttribute("scrolling", "no");
-      var s = Math.min(W / DESIGN_W, H / contentH);
+      var s = Math.min(W / DESIGN_W, H / contentH) * FILL;
       frame.style.transform = "translate(-50%,-50%) scale(" + s + ")";
     }
   }
