@@ -508,18 +508,23 @@ body.sb .g-thumb[aria-current="true"]::after{background:#3d5a4a}
 .lhero .eyebrow-top{position:absolute;left:49%;top:-6%;transform:translateX(-50%);z-index:6;
   font-weight:700;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);white-space:nowrap}
 .lhero .btns{position:absolute;left:1%;top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:13px;align-items:flex-start}
+.lhero-tag{display:none}
 @media (prefers-reduced-motion:reduce){.lhero *{transition:none!important;animation:none!important}}
 @media (max-width:860px){
   /* clean vertical stack; the circle/white-letter trick is desktop-only */
-  .lhero .stage{height:auto;padding:16px 0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .lhero{min-height:auto;align-items:start}
+  .lhero .stage{width:100%;height:auto;padding:14px 20px 8px;display:flex;flex-direction:column;align-items:center;text-align:center}
   .lhero .circle{display:none}
-  .lhero .eyebrow-top{position:relative;left:0;top:0;transform:none;margin-bottom:10px;white-space:normal;max-width:90vw;font-size:11px;letter-spacing:.16em;line-height:1.6}
-  .lhero .bgword.z1{position:relative;top:0;left:0;transform:none;font-size:14.5vw;line-height:.86;color:var(--ink);z-index:1}
-  .lhero .side-right{position:relative;left:0;right:0;top:0;transform:none;text-align:center;color:var(--burg);margin:6px 0 2px;line-height:.9}
-  .lhero .side-right .big{font-size:13.5vw}
-  .lhero .side-right .sm{font-size:7vw;margin:.04em 0}
-  .lhero .devstage{position:relative;left:0;top:0;transform:none;width:96%;margin:12px auto 0}
-  .lhero .btns{position:relative;left:0;top:0;transform:none;align-items:center;margin-top:18px}
+  .lhero .eyebrow-top{position:relative;left:0;top:0;transform:none;margin-bottom:4px;white-space:normal;max-width:92vw;font-size:10.5px;letter-spacing:.14em;line-height:1.5}
+  .lhero .bgword.z1{position:relative;top:0;left:0;transform:none;font-size:17vw;line-height:.82;color:var(--ink);z-index:1}
+  .lhero .side-right{position:relative;left:0;right:0;top:0;transform:none;text-align:center;color:var(--burg);margin:0;line-height:.78}
+  .lhero .side-right .big{font-size:15.5vw}
+  .lhero .side-right .sm{font-size:7vw;margin:-.04em 0}
+  .lhero .devstage{position:relative;left:0;top:0;transform:none;width:100%;max-width:400px;margin:18px auto 0}
+  .lhero-tag{display:block;max-width:31ch;margin:18px auto 0;font-family:var(--disp);font-weight:500;font-size:16.5px;line-height:1.38;color:var(--ink-soft);letter-spacing:-.005em}
+  .lhero-tag b{color:var(--burg);font-weight:600}
+  .lhero .btns{position:relative;left:0;top:0;transform:none;align-items:center;gap:11px;margin-top:20px;width:100%}
+  .lhero .btns .sk{width:min(86vw,340px);justify-content:center;text-align:center}
 }
 
 /* ==========================================================================
