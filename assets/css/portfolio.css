@@ -182,7 +182,7 @@ button{font:inherit;cursor:pointer}
 }
 .project__media{position:relative}
 .project__shot{position:relative;border-radius:14px;overflow:hidden;
-  box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--shadow);border:0;
   aspect-ratio:9/10;background:var(--paper)}
 .project__shot img{width:100%;height:100%;object-fit:cover;object-position:top center;
   transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
@@ -399,3 +399,57 @@ body.sb .g-visit:hover,body.sb .btn--solid:hover{background:#3d5a4a}
 body.sb .eyebrow,body.sb .g-thumb .tn,body.sb .g-foot .fh{color:#c0703a}
 body.sb .g-thumb[aria-current="true"]{border-color:#3d5a4a;background:#eef2ec}
 body.sb .g-thumb[aria-current="true"]::after{background:#3d5a4a}
+
+/* ==========================================================================
+   HAND-DRAWN BUTTONS (B5 sketch outline + B6 solid), rendered with rough.js
+   ========================================================================== */
+.sk{position:relative;display:inline-flex;align-items:center;gap:.5em;
+  font-family:var(--body);font-weight:600;font-size:15px;line-height:1;cursor:pointer;
+  border:0;background:transparent;padding:15px 30px;color:var(--burg);text-decoration:none;
+  transition:color .25s,background .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+.sk .lbl{position:relative;z-index:2}
+.sk .ov{position:absolute;left:0;top:0;width:100%;height:100%;display:block;z-index:1;overflow:visible;pointer-events:none}
+.sk:hover{transform:translateY(-2px) rotate(-.6deg)}
+.sk:focus-visible{outline:3px solid rgba(226,98,46,.6);outline-offset:4px;border-radius:6px}
+.b5{color:var(--burg)}
+.b5 .fill{position:absolute;inset:0;z-index:0;background:var(--coral);opacity:0;transition:opacity .25s;border-radius:6px}
+.b5:hover{color:#fff}.b5:hover .fill{opacity:1}
+.b6{background:var(--burg);color:#fff;border-radius:40px}
+.b6:hover{background:var(--coral)}
+.nav-links .sk{padding:11px 22px;font-size:14px}
+@media (prefers-reduced-motion:reduce){.sk:hover{transform:none}}
+
+/* ==========================================================================
+   FREE ROUGH DRAFT (F1, un-boxed editorial)
+   ========================================================================== */
+.draft{position:relative;max-width:1000px}
+.draft__lead{font-family:var(--disp);font-weight:600;font-size:clamp(30px,5.4vw,60px);
+  line-height:1.01;letter-spacing:-.02em;color:var(--burg);margin-top:12px;max-width:20ch}
+.draft__lead em{font-style:italic;color:var(--coral)}
+.draft__sub{margin-top:18px;max-width:60ch;color:var(--ink-soft);font-size:clamp(15px,1.3vw,17.5px)}
+.draft__steps{display:flex;gap:clamp(26px,4vw,44px);margin-top:clamp(30px,4.5vw,46px);flex-wrap:wrap}
+.draft__st{flex:1;min-width:190px}
+.draft__st .n{font-family:var(--disp);font-style:italic;font-weight:600;font-size:36px;color:var(--coral);line-height:1}
+.draft__st h4{font-family:var(--disp);font-weight:600;font-size:21px;margin-top:8px;color:var(--ink)}
+.draft__st p{font-size:14.5px;color:var(--ink-soft);margin-top:5px}
+.draft__st + .draft__st{border-left:2px solid var(--line);padding-left:clamp(26px,4vw,44px)}
+.draft__cta{margin-top:clamp(28px,4vw,40px)}
+@media (max-width:640px){.draft__st + .draft__st{border-left:0;padding-left:0}}
+
+/* ==========================================================================
+   CONTACT (C3: oversized "LET'S BUILD" fills the section, content on top)
+   ========================================================================== */
+.contact3{padding:clamp(36px,6vw,80px) 0}
+.c3{position:relative;min-height:clamp(380px,50vw,560px);display:grid;place-content:center;
+  text-align:center;overflow:hidden;padding:36px var(--gutter)}
+.c3__ghost{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;font-family:var(--disp);font-weight:600;
+  text-transform:uppercase;letter-spacing:-.03em;line-height:.74;
+  color:rgba(111,29,53,.085);pointer-events:none;user-select:none}
+.c3__ghost span{font-size:clamp(84px,25vw,280px);display:block}
+.c3__content{position:relative;z-index:1;display:grid;gap:16px;justify-items:center}
+.c3__lt{font-family:var(--disp);font-weight:600;font-size:clamp(46px,9vw,104px);
+  letter-spacing:-.03em;line-height:1;color:#1c1714}
+.c3__lt em{font-style:italic;color:var(--burg)}
+.c3__content p{max-width:46ch;color:var(--ink-soft);font-size:clamp(15px,1.3vw,17.5px)}
+.c3__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:12px}
