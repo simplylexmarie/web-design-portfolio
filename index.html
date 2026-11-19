@@ -6,7 +6,7 @@
 <title>St. Petersburg &amp; Tampa Bay Web Designer | Alexia Rucker</title>
 <meta name="description" content="Custom, mobile-first websites for local businesses in St. Petersburg, Tampa, Clearwater and the greater Tampa Bay area. Fully custom, never a template. Free rough draft, no commitment.">
 <meta name="author" content="Alexia Rucker">
-<meta name="theme-color" content="#f6ece0">
+<meta name="theme-color" content="#efe4c7">
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="St. Petersburg, Florida">
 <meta name="geo.position" content="27.7676;-82.6403">
@@ -29,17 +29,15 @@
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/portfolio.css">
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Rubik:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/home.css">
 
-<!-- Hold the hero hidden until the zoom-in intro is ready, so it never flashes
-     the full layout first. Fails safe: revealed on DOMContentLoaded + a timeout. -->
-<style>html.pre-hero .lhero .stage>*{opacity:0}</style>
+<!-- Hold the hero hidden until the drag-in intro is ready, so it never flashes
+     the assembled layout first. Fails safe: revealed on a timeout. -->
+<style>html.pre .hero__stage,html.pre .screen__sub,html.pre .hero__cta,html.pre .hero__trust,html.pre .sticker{opacity:0}</style>
 <script>
-  document.documentElement.classList.add('pre-hero');
-  var _reveal=function(){document.documentElement.classList.remove('pre-hero');};
-  document.addEventListener('DOMContentLoaded',_reveal);
-  setTimeout(_reveal,3000);
+  document.documentElement.classList.add('pre');
+  setTimeout(function(){document.documentElement.classList.remove('pre');},2800);
 </script>
 
 <script type="application/ld+json">
@@ -76,223 +74,256 @@
 }
 </script>
 </head>
-<body>
+<body id="top">
 <a class="skip" href="#work">Skip to featured work</a>
 
+<!-- ===== NAV ===== -->
 <header class="nav">
-  <a class="brand" href="#top" aria-label="Alexia Rucker, Web Design, home">
-    <b>Alexia Rucker</b><span>Web Design</span>
-  </a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="#work" class="nav-hide">Work</a>
-    <a href="#services" class="nav-hide">Services</a>
-    <a href="#offer" class="nav-hide">Free draft</a>
-    <a href="#contact" class="sk b6"><span class="lbl">Let's talk</span></a>
-  </nav>
-</header>
-
-<main id="top">
-
-  <!-- ===== HERO (interactive laptop) ===== -->
-  <section class="lhero" id="hero">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="stage" id="stageEl">
-      <div class="eyebrow-top">Custom web design · St. Petersburg &amp; Tampa Bay, FL</div>
-      <div class="bgword z1" aria-hidden="true">Nothing</div>
-
-      <div class="circle" aria-hidden="true">
-        <div class="circle__inner" id="circleInner">
-          <div class="bgword">Nothing</div>
-        </div>
-      </div>
-
-      <h1 class="side-right"><span class="big">off</span><span class="sm">the</span><span class="big">shelf.</span></h1>
-
-      <div class="devstage">
-        <div class="device" id="device">
-          <img src="assets/img/laptop-front.webp" alt="A laptop showing a little about Alexia" id="lap">
-          <div class="screen" id="screen">
-            <div class="mini">
-              <div class="introslide on" id="introslide"><div class="it">Websites built <em>custom.</em></div></div>
-              <div class="slide s0" data-i="0">
-                <img src="assets/img/portrait.jpg" alt="">
-                <div class="t"><span class="k">Hi there &#10022;</span><h3>I'm <em>Alexia.</em></h3><p>Web designer in St. Pete, building custom sites that actually feel like the business behind them.</p></div>
-              </div>
-              <div class="slide s1" data-i="1"><div><span class="k">A little about me</span><p>Marketing grad turned designer. I sweat the small details most templates skip, so your site feels made for you.</p></div></div>
-              <div class="slide s2" data-i="2"><p>"You're so much more than a template."</p></div>
-              <div class="slide s3" data-i="3"><div><span class="k">Like what you see?</span><h3>Let's build yours.</h3></div></div>
-            </div>
-          </div>
-          <button class="scrclick" id="scrclick" aria-label="Flip through a little about Alexia"></button>
-        </div>
-      </div>
-
-      <p class="lhero-tag">Fully custom websites for local businesses in <b>St. Pete &amp; Tampa Bay.</b> Built around you, never a template.</p>
-
-      <div class="btns">
-        <a class="sk b6" href="#work"><span class="lbl">See my work</span></a>
-        <a class="sk b5" href="#offer" data-sketch="double"><span class="fill"></span><svg class="ov"></svg><span class="lbl">Free rough draft</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURED WORK ===== -->
-  <section class="sec" id="work">
-    <div class="shell">
-      <div class="sec-head">
-        <span class="eyebrow" data-reveal>Featured work</span>
-        <h2 data-reveal>Real sites, for real<br>local businesses.</h2>
-        <p data-reveal>Two recent builds, each a living, interactive case study you can play with right in your browser. This is the kind of custom site I build for businesses across St. Petersburg and Tampa Bay.</p>
-      </div>
-
-      <div class="work">
-
-        <!-- Smokehouse -->
-        <article class="project project--dark" data-reveal>
-          <span class="project__ghost" aria-hidden="true">Smokehouse</span>
-          <div class="project__media">
-            <span class="project__num" aria-hidden="true">01</span>
-            <div class="project__shot">
-              <img src="assets/img/smokehouse-desktop.png" alt="The Smokehouse website homepage, a dark cinematic butcher and meat-processing site">
-            </div>
-            <span class="project__anno" aria-hidden="true">play with it<svg viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M56 8 C 34 2, 12 12, 7 36"/><path d="M7 36 L 17 31 M7 36 L 13 26"/></svg></span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Butcher &amp; meat processing</p>
-            <h3>The Smokehouse</h3>
-            <p class="desc">Moody, modern butcher &amp; meat-processing site. Living smoke, an interactive product catalog, and a cow that grazes as you read.</p>
-            <ul class="project__tags">
-              <li>Animated hero</li><li>Interactive catalog</li><li>Compare slider</li><li>Cut-sheet diagrams</li>
-            </ul>
-            <div class="project__cta">
-              <a class="sk b6" href="projects/smokehouse/"><span class="lbl">Explore this project</span></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Stonebrook -->
-        <article class="project project--sb" data-reveal style="--reveal-delay:.12s">
-          <span class="project__ghost" aria-hidden="true">Stonebrook</span>
-          <div class="project__media">
-            <span class="project__num" aria-hidden="true">02</span>
-            <div class="project__shot">
-              <img src="assets/img/stonebrook-desktop.png" alt="The Stonebrook Carpentry website homepage, a clean architectural carpentry site">
-            </div>
-            <span class="project__anno" aria-hidden="true">play with it<svg viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 C 26 2, 48 12, 53 36"/><path d="M53 36 L 43 31 M53 36 L 47 26"/></svg></span>
-          </div>
-          <div class="project__body">
-            <p class="kicker">Carpentry &amp; remodeling</p>
-            <h3>Stonebrook Carpentry</h3>
-            <p class="desc">Bold and clean, built to book free estimates. A tape-measure scroll indicator, stacking remodel stages, and a real project gallery.</p>
-            <ul class="project__tags">
-              <li>Tape-measure scroll</li><li>Service stack</li><li>Behind-the-walls</li><li>Project gallery</li>
-            </ul>
-            <div class="project__cta">
-              <a class="sk b6" href="projects/stonebrook/"><span class="lbl">Explore this project</span></a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES & PRICING ===== -->
-  <section class="sec" id="services">
-    <div class="shell">
-      <div class="sec-head">
-        <span class="eyebrow" data-reveal>Services &amp; pricing</span>
-        <h2 data-reveal>Simple, honest<br><em>pricing.</em></h2>
-        <p data-reveal>No packages full of things you don't need. A custom site, and an easy way to keep it fresh.</p>
-      </div>
-      <div class="services">
-        <div class="price price--feature" data-reveal>
-          <span class="price__sticker">most popular</span>
-          <span class="price__tag">Build</span>
-          <h3>Custom Website</h3>
-          <div class="price__amt"><b>$1,500</b><span>starting at</span></div>
-          <p>A fully custom design and build, mobile-first, made to represent exactly who you are. Never a template.</p>
-        </div>
-        <div class="price" data-reveal style="--reveal-delay:.1s">
-          <span class="price__tag">Keep it fresh</span>
-          <h3>Care &amp; Maintenance</h3>
-          <div class="price__amt"><b>$50</b><span>/ mo, starting at</span></div>
-          <p>Package options for hosting, updates, and ongoing edits so your site always stays fresh.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FREE ROUGH DRAFT (F1, un-boxed) ===== -->
-  <section class="sec" id="offer">
-    <div class="shell">
-      <div class="draft" data-reveal>
-        <span class="eyebrow">My offer to you</span>
-        <h2 class="draft__lead">See your website reimagined, <em>before you pay a thing.</em></h2>
-        <p class="draft__sub">Send me your business name (or current site) and I'll create a free rough draft of a redesigned homepage. Love the direction? We carry on from there. No cost, no commitment to look.</p>
-        <div class="draft__steps">
-          <div class="draft__st" data-reveal>
-            <div class="n">01</div>
-            <h4>You reach out</h4>
-            <p>Your business name or current site link.</p>
-          </div>
-          <div class="draft__st" data-reveal style="--reveal-delay:.1s">
-            <div class="n">02</div>
-            <h4>Free rough draft</h4>
-            <p>I design a sample homepage for you.</p>
-          </div>
-          <div class="draft__st" data-reveal style="--reveal-delay:.2s">
-            <div class="n">03</div>
-            <h4>Love it? We build</h4>
-            <p>We take it from draft to live site.</p>
-          </div>
-        </div>
-        <div class="draft__cta">
-          <a class="sk b6" href="#contact"><span class="lbl">Claim my free rough draft</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT (C3: giant LET'S BUILD behind the content) ===== -->
-  <section class="contact3" id="contact">
-    <div class="c3">
-      <div class="c3__ghost" aria-hidden="true"><span>Let's</span><span>build</span></div>
-      <div class="c3__content" data-reveal>
-        <span class="eyebrow">Let's talk</span>
-        <h2 class="c3__lt">Let's <em>talk.</em></h2>
-        <p>Tell me about your business and I'll send back a free rough draft of your homepage. No pressure, no commitment, just a look at what your site could be.</p>
-        <div class="c3__cta">
-          <a class="sk b6" href="mailto:aalexiammarie@gmail.com?subject=Free%20rough%20draft%20request&amp;body=Hi%20Alexia!%20Here's%20my%20business%20name%20(or%20current%20site):%20"><span class="lbl">Email me</span></a>
-          <a class="sk b5" data-sketch="double" href="#offer"><span class="fill"></span><svg class="ov"></svg><span class="lbl">Get a free rough draft</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="foot">
-  <div class="foot__row">
-    <div class="foot__brand">
-      <b>Alexia Rucker</b>
-      <span>Custom web design · St. Petersburg, FL</span>
-    </div>
-    <nav class="foot__links" aria-label="Footer">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#offer">Free draft</a>
-      <a href="mailto:aalexiammarie@gmail.com">Email</a>
+  <div class="nav__in">
+    <a class="brand" href="#top" aria-label="Alexia Rucker, Web Design, home">
+      <span class="brand__mark">A</span>
+      <span class="brand__txt"><b>Alexia Rucker</b><span>Web Design</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="lnk" href="#work">Work</a>
+      <a class="lnk" href="#features">Features</a>
+      <a class="lnk" href="#pricing">Pricing</a>
+      <a class="btn btn--pink" href="#contact">Let's talk</a>
     </nav>
   </div>
-  <p class="foot__areas">Custom web design serving St. Petersburg, Tampa, Clearwater, Largo, Brandon, Sarasota and the greater Tampa Bay area.</p>
-  <p class="foot__fine">© <span id="yr"></span> Alexia Rucker. Designed &amp; built by hand. The Smokehouse and Stonebrook Carpentry sites are shown with permission.</p>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__eyebrow"><span class="eyebrow">custom web design &middot; st. pete &amp; tampa bay</span></div>
+
+      <div class="hero__stage">
+        <!-- doodle stickers -->
+        <span class="sticker st--1" aria-hidden="true"><svg viewBox="0 0 32 32"><g fill="#df4a2b" stroke="#38321d" stroke-width="2.3"><circle cx="16" cy="7.5" r="5"/><circle cx="16" cy="24.5" r="5"/><circle cx="7.5" cy="16" r="5"/><circle cx="24.5" cy="16" r="5"/></g><circle cx="16" cy="16" r="4.5" fill="#eab53b" stroke="#38321d" stroke-width="2.3"/></svg></span>
+        <span class="sticker st--2" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 2l3.8 8.6 9.4.8-7.1 6.2 2.1 9.2L16 24.8 7.7 29.8l2.1-9.2-7.1-6.2 9.4-.8z" fill="#eab53b" stroke="#38321d" stroke-width="2.3" stroke-linejoin="round"/></svg></span>
+        <span class="sticker st--3" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 1c1 8 7 14 15 15-8 1-14 7-15 15-1-8-7-14-15-15 8-1 14-7 15-15z" fill="#71813d" stroke="#38321d" stroke-width="2.3" stroke-linejoin="round"/></svg></span>
+        <span class="sticker st--4" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="7" fill="#f0c2cf" stroke="#38321d" stroke-width="2.3"/><g stroke="#38321d" stroke-width="2.3" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6.5 6.5l2.8 2.8M22.7 22.7l2.8 2.8M25.5 6.5l-2.8 2.8M9.3 22.7l-2.8 2.8"/></g></svg></span>
+        <span class="sticker st--5" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4c.7 5.5 5 9 11 11-6 2-10.3 5.5-11 11-.7-5.5-5-9-11-11 6-2 10.3-5.5 11-11z" fill="#eab53b" stroke="#38321d" stroke-width="2.3" stroke-linejoin="round"/></svg></span>
+
+        <div class="screen">
+          <div class="screen__strip"></div>
+          <div class="screen__canvas">
+            <div class="screen__tag">&#9733; loading your homepage</div>
+            <h1 class="headline" aria-label="Let's build your site.">
+              <span class="w">Let's</span><span class="w">build</span><span class="w">your</span><span class="w">site.</span>
+            </h1>
+            <p class="screen__sub">Designed from a blank page and built to feel exactly like you, never a template.</p>
+            <div class="hero__cursor" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 2l0 18 4.2-4.2 2.6 5.2 2.8-1.3-2.6-5.1 6 0z" fill="#f8f1dd" stroke="#38321d" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--pink btn--lg" href="#offer">Get a free rough draft
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--lg" href="#work">See the work</a>
+      </div>
+      <div class="hero__trust">
+        <span><b>2</b> live client sites</span><span class="dot">&#9733;</span>
+        <span>serving <b>Tampa Bay</b></span><span class="dot">&#9733;</span>
+        <span><b>free</b> rough draft</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Let's build your site</span><span>Custom web design</span><span>St. Pete + Tampa Bay</span><span>Free rough draft</span>
+      <span>Let's build your site</span><span>Custom web design</span><span>St. Pete + Tampa Bay</span><span>Free rough draft</span>
+    </div>
+  </div>
+
+  <!-- ===== FEATURED WORK ===== -->
+  <section class="section section--sage" id="work">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <span class="eyebrow">featured work</span>
+        <h2>Real sites for real <span class="red">local businesses.</span></h2>
+        <p>Two recent builds you can actually play with. Each one is a living, interactive case study, click in and try the real features right in your browser.</p>
+      </div>
+      <div class="work">
+        <a class="card reveal" href="projects/smokehouse/" style="--ca:#df4a2b">
+          <div class="card__shot">
+            <span class="card__tagline"><i></i> butcher &amp; meat processing</span>
+            <img src="assets/img/smokehouse-desktop.png" alt="The Smokehouse website, a moody cinematic butcher and meat-processing site" loading="lazy">
+          </div>
+          <div class="card__body">
+            <h3>The Smokehouse</h3>
+            <p>Moody and modern, with living smoke, an interactive product catalog, a compare slider, and a cow that grazes as you read.</p>
+            <div class="card__chips"><span>animated hero</span><span>interactive catalog</span><span>compare slider</span></div>
+            <span class="card__go">Explore this project
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+        <a class="card reveal" href="projects/stonebrook/" style="--ca:#71813d" data-delay=".1s">
+          <div class="card__shot">
+            <span class="card__tagline"><i></i> carpentry &amp; remodeling</span>
+            <img src="assets/img/stonebrook-desktop.png" alt="The Stonebrook Carpentry website, a clean architectural carpentry and remodeling site" loading="lazy">
+          </div>
+          <div class="card__body">
+            <h3>Stonebrook Carpentry</h3>
+            <p>Clean and architectural, built to book free estimates, with a tape-measure scroll, stacking remodel stages, and a real project gallery.</p>
+            <div class="card__chips"><span>tape-measure scroll</span><span>service stack</span><span>project gallery</span></div>
+            <span class="card__go">Explore this project
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES (bento) ===== -->
+  <section class="section section--pink" id="features">
+    <div class="wrap">
+      <div class="section__head center reveal">
+        <span class="eyebrow">what you get</span>
+        <h2>Sites that work as hard <span class="red">as you do.</span></h2>
+        <p>Not a drag-and-drop template with your logo dropped on top. Every build is designed around your business, your customers, and the one thing you want them to do.</p>
+      </div>
+      <div class="bento">
+        <div class="b b--feature reveal">
+          <div class="b__big">100%</div>
+          <h3>Custom, down to the pixel.</h3>
+          <p>No themes, no cookie-cutter layouts. Your site is designed and built from a blank page so it looks like nobody else's.</p>
+        </div>
+        <div class="b b--half reveal" data-delay=".05s">
+          <span class="b__ico" style="background:var(--sage)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 3l15 9-6 1.5L11 20 5 3z"/></svg></span>
+          <h3>Interactive by design</h3>
+          <p>Scroll effects, hover states, and little moments that make people stay and remember you.</p>
+        </div>
+        <div class="b b--half reveal" data-delay=".1s">
+          <span class="b__ico" style="background:var(--mustard)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+          <h3>Mobile-first, always</h3>
+          <p>Most of your visitors are on a phone. Your site is built to look flawless there first.</p>
+        </div>
+        <div class="b b--sm reveal">
+          <span class="b__ico" style="background:var(--pink-2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+          <h3>Built to convert</h3>
+          <p>Designed around the call, booking, or estimate you actually want.</p>
+        </div>
+        <div class="b b--sm reveal" data-delay=".05s">
+          <span class="b__ico" style="background:var(--mustard-2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+          <h3>Fast &amp; lightweight</h3>
+          <p>Clean, hand-built code that loads quick and ranks better.</p>
+        </div>
+        <div class="b b--sm reveal" data-delay=".1s">
+          <span class="b__ico" style="background:var(--sage)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></span>
+          <h3>Local &amp; personal</h3>
+          <p>I'm right here in St. Pete. You work directly with me, start to finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section section--mustard" id="pricing">
+    <div class="wrap">
+      <div class="section__head center reveal">
+        <span class="eyebrow">simple pricing</span>
+        <h2>Honest pricing, <span class="red">no surprises.</span></h2>
+        <p>No bloated packages full of things you don't need. One custom site, and an easy way to keep it fresh.</p>
+      </div>
+      <div class="price">
+        <div class="plan plan--hot reveal">
+          <span class="plan__badge">&#9733; most popular</span>
+          <span class="plan__tag">build</span>
+          <h3>Custom Website</h3>
+          <div class="plan__amt"><b>$1,500</b><span>starting at</span></div>
+          <p class="plan__desc">A fully custom design and build, made to represent exactly who you are.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Designed from scratch, never a template</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Mobile-first and fast</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Interactive features that fit your business</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Launch support, soup to nuts</li>
+          </ul>
+          <a class="btn btn--pink" href="#offer">Start with a free draft</a>
+        </div>
+        <div class="plan reveal" data-delay=".08s">
+          <span class="plan__tag">keep it fresh</span>
+          <h3>Care &amp; Maintenance</h3>
+          <div class="plan__amt"><b>$50</b><span>/ mo, starting at</span></div>
+          <p class="plan__desc">Hosting, updates, and ongoing edits so your site always stays current.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Hosting handled for you</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Content and photo updates</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Small tweaks whenever you need them</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg> Flexible, cancel anytime</li>
+          </ul>
+          <a class="btn btn--mint" href="#contact">Ask about care plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFER ===== -->
+  <section class="section" id="offer">
+    <div class="wrap">
+      <div class="offer reveal">
+        <div class="offer__strip"></div>
+        <div class="offer__in">
+          <span class="eyebrow">my offer to you</span>
+          <h2>See your website reimagined, before you pay a thing.</h2>
+          <p>Send me your business name or current site, and I'll design a free rough draft of a redesigned homepage. Love the direction? We build from there.</p>
+          <div class="offer__steps">
+            <div class="offer__st"><b>01</b><h4>You reach out</h4><p>Your business name or current site link.</p></div>
+            <div class="offer__st"><b>02</b><h4>Free rough draft</h4><p>I design a sample homepage, just for you.</p></div>
+            <div class="offer__st"><b>03</b><h4>Love it? We build</h4><p>We take it from draft to a live site.</p></div>
+          </div>
+          <a class="btn btn--yellow btn--lg" href="mailto:aalexiammarie@gmail.com?subject=Free%20rough%20draft%20request&amp;body=Hi%20Alexia!%20Here's%20my%20business%20name%20(or%20current%20site):%20">Claim my free rough draft</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="wrap reveal">
+      <span class="eyebrow" style="display:inline-flex">let's talk</span>
+      <h2>Ready to build <span class="red">your site?</span></h2>
+      <p>Tell me about your business and I'll send back a free rough draft of your homepage. No pressure, no commitment, just a look at what your site could be.</p>
+      <div class="contact__cta">
+        <a class="btn btn--pink btn--lg" href="mailto:aalexiammarie@gmail.com?subject=New%20project%20inquiry&amp;body=Hi%20Alexia!%20I'd%20love%20to%20talk%20about%20a%20website%20for%20my%20business.%20">Email me
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--lg" href="#work">See the work</a>
+      </div>
+      <p class="contact__email">aalexiammarie@gmail.com</p>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__big">let's build.</div>
+    <div class="foot__row">
+      <a class="brand" href="#top">
+        <span class="brand__mark">A</span>
+        <span class="brand__txt"><b>Alexia Rucker</b><span>Web Design</span></span>
+      </a>
+      <nav class="foot__links" aria-label="Footer">
+        <a href="#work">Work</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#offer">Free draft</a>
+        <a href="mailto:aalexiammarie@gmail.com">Email</a>
+      </nav>
+    </div>
+    <p class="foot__areas">Custom web design serving St. Petersburg, Tampa, Clearwater, Largo, Brandon, Sarasota and the greater Tampa Bay area.</p>
+    <p class="foot__fine">&copy; <span id="yr"></span> Alexia Rucker &#9733; designed &amp; built by hand. The Smokehouse and Stonebrook Carpentry sites are shown with permission.</p>
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="assets/js/sketch.js"></script>
-<script src="assets/js/hero.js"></script>
-<script src="assets/js/portfolio.js" defer></script>
+<script src="assets/js/home.js" defer></script>
 </body>
 </html>
